@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Peru Corp SA — Ronda Fundadora">
 <meta property="og:description" content="Micro-corporacion de inversion privada. 7 socios, 5 verticales, capital real. Solo 3 lugares disponibles.">
-<meta property="og:image" content="assets/perucorp-banner.png">
+<meta property="og:image" content="assets/perucorp-banner.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Peru Corp SA — Ronda Fundadora">
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Peru Corp SA — Ronda Fundadora">
 <meta name="twitter:description" content="Micro-corporacion de inversion privada. 7 socios, 5 verticales, capital real. Solo 3 lugares disponibles.">
-<meta name="twitter:image" content="assets/perucorp-banner.png">
+<meta name="twitter:image" content="assets/perucorp-banner.jpg">
 
 <!-- General -->
 <meta name="description" content="Peru Corp SA es una micro-corporacion de inversion privada. 7 socios fundadores, 5 verticales de inversion, capital real. Ronda fundadora abierta.">
@@ -665,6 +665,22 @@ footer {
   pointer-events: none;
 }
 
+/* HERO BANNER IMAGE */
+.hero-banner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 48px 0;
+}
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 40px rgba(14,14,12,0.08);
+}
+
 /* ANIMATIONS */
 @keyframes up { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
 .reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
@@ -696,6 +712,7 @@ footer {
   .cta-final, .disc { padding-left:20px; padding-right:20px; }
   footer { padding:24px 20px; flex-direction:column; text-align:center; }
   .chart-box { padding:24px 16px 20px; }
+  .hero-banner { padding:40px 20px 0; }
   .proj-sec { padding:72px 20px; }
   .proj-grid { grid-template-columns:1fr; }
   .proj-banner { min-height:220px; padding:36px 28px; }
@@ -762,6 +779,11 @@ footer {
     <div class="cd-colon">:</div>
     <div class="cd-unit"><span class="cd-n" id="cd-s">--</span><span class="cd-sub">Seg</span></div>
   </div>
+</div>
+
+<!-- BANNER IMAGE -->
+<div class="hero-banner reveal">
+  <img src="assets/perucorp-banner.jpg" alt="Peru Corp SA — Ronda Fundadora" loading="lazy">
 </div>
 
 <!-- WHAT IS IT -->
