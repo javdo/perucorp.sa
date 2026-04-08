@@ -4,6 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Peru Corp SA — Ronda Fundadora</title>
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Peru Corp SA — Ronda Fundadora">
+<meta property="og:description" content="Micro-corporacion de inversion privada. 7 socios, 5 verticales, capital real. Solo 3 lugares disponibles.">
+<meta property="og:image" content="assets/perucorp-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Peru Corp SA — Ronda Fundadora">
+<meta property="og:locale" content="es_PE">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Peru Corp SA — Ronda Fundadora">
+<meta name="twitter:description" content="Micro-corporacion de inversion privada. 7 socios, 5 verticales, capital real. Solo 3 lugares disponibles.">
+<meta name="twitter:image" content="assets/perucorp-banner.png">
+
+<!-- General -->
+<meta name="description" content="Peru Corp SA es una micro-corporacion de inversion privada. 7 socios fundadores, 5 verticales de inversion, capital real. Ronda fundadora abierta.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
@@ -574,6 +594,77 @@ footer {
 .foot-logo { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.5px; }
 .foot-r { font-family: 'Syne', sans-serif; font-size: 10px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; }
 
+/* PROJECT BANNERS */
+.proj-sec { padding: 112px 48px; max-width: 1200px; margin: 0 auto; }
+.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+.proj-banner {
+  position: relative; overflow: hidden;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+  padding: 48px 40px;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 280px;
+  transition: transform .35s, border-color .35s, box-shadow .35s;
+}
+.proj-banner:hover {
+  transform: translateY(-4px);
+  border-color: var(--amber);
+  box-shadow: 0 16px 48px rgba(14,14,12,0.08);
+}
+.proj-banner--re {
+  background: linear-gradient(135deg, #f5f0e6 0%, var(--bg2) 100%);
+}
+.proj-banner--dental {
+  background: var(--ink);
+  color: var(--bg);
+}
+.proj-banner--dental .proj-tag { color: #2dd4a8; border-color: rgba(45,212,168,0.3); }
+.proj-banner--dental .proj-title { color: var(--bg); }
+.proj-banner--dental .proj-desc { color: rgba(247,246,242,0.5); }
+.proj-banner--dental .proj-arrow { background: rgba(247,246,242,0.08); border-color: rgba(247,246,242,0.12); color: var(--bg); }
+.proj-banner--dental:hover { border-color: #2dd4a8; }
+.proj-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--amber);
+  border: 1.5px solid rgba(217,123,43,0.3);
+  padding: 4px 14px; border-radius: 100px;
+  display: inline-block; width: fit-content;
+  margin-bottom: 20px;
+}
+.proj-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px; font-weight: 800;
+  line-height: 1.1; margin-bottom: 10px;
+}
+.proj-desc {
+  font-size: 14px; font-weight: 300;
+  color: var(--muted); line-height: 1.7;
+  max-width: 380px;
+}
+.proj-arrow {
+  position: absolute; top: 24px; right: 24px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  transition: background .25s, border-color .25s, transform .25s;
+}
+.proj-banner:hover .proj-arrow {
+  transform: translate(3px, -3px);
+  border-color: var(--amber);
+}
+.proj-banner--dental:hover .proj-arrow { border-color: #2dd4a8; }
+.proj-pct {
+  position: absolute; top: 24px; left: 40px;
+  font-family: 'Syne', sans-serif;
+  font-size: 64px; font-weight: 800;
+  opacity: 0.04; line-height: 1;
+  pointer-events: none;
+}
+
 /* ANIMATIONS */
 @keyframes up { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
 .reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
@@ -605,6 +696,11 @@ footer {
   .cta-final, .disc { padding-left:20px; padding-right:20px; }
   footer { padding:24px 20px; flex-direction:column; text-align:center; }
   .chart-box { padding:24px 16px 20px; }
+  .proj-sec { padding:72px 20px; }
+  .proj-grid { grid-template-columns:1fr; }
+  .proj-banner { min-height:220px; padding:36px 28px; }
+  .proj-title { font-size:22px; }
+  .proj-pct { font-size:48px; }
 }
 </style>
 </head>
@@ -788,6 +884,30 @@ footer {
         <div class="leg"><div class="leg-bar" style="background:#adadA5;"></div><div class="leg-info"><div class="leg-name">Capital Oportunista</div><div class="leg-desc">Nuevas verticales, despliegue flexible</div></div><div class="leg-pct">10%</div></div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- PROJECT VERTICALS -->
+<div class="proj-sec" id="verticales">
+  <div class="eye reveal">Verticales de Inversion</div>
+  <h2 class="sh reveal">Explora cada <span class="it">vertical.</span></h2>
+  <p class="sp reveal d1">Cada vertical tiene su propia estrategia, metricas y modelo de crecimiento. Conoce los detalles de cada uno.</p>
+
+  <div class="proj-grid">
+    <a href="projectos/bienes-raices/" class="proj-banner proj-banner--re reveal d1">
+      <span class="proj-pct">35%</span>
+      <div class="proj-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proj-tag">Vertical 01</div>
+      <div class="proj-title">Bienes Raices</div>
+      <div class="proj-desc">Estrategias de inversion inmobiliaria: buy & hold, fix & flip, BRRRR y mas. Guia completa para construir riqueza con propiedades.</div>
+    </a>
+    <a href="projectos/dental/" class="proj-banner proj-banner--dental reveal d2">
+      <span class="proj-pct">25%</span>
+      <div class="proj-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="proj-tag">Vertical 02</div>
+      <div class="proj-title">Clinicas Dentales</div>
+      <div class="proj-desc">Modelo de expansion dental: sistemas replicables, dentistas asociados, KPIs criticos y roadmap hacia un grupo dental (DSO).</div>
+    </a>
   </div>
 </div>
 

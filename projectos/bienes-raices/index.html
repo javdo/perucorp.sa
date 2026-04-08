@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>INVERSO — Colectivo de Inversión Fundador</title>
+<title>Bienes Raices — Peru Corp SA</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -24,7 +24,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -36,7 +35,7 @@
     overflow-x: hidden;
   }
 
-  /* ─── NOISE TEXTURE OVERLAY ─── */
+  /* Noise overlay */
   body::before {
     content: '';
     position: fixed; inset: 0;
@@ -54,11 +53,19 @@
   }
   .nav-logo {
     font-family: 'Space Mono', monospace;
-    font-size: 20px; font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 3px;
+    font-size: 18px; font-weight: 700;
+    color: var(--gold); letter-spacing: 3px;
+    text-decoration: none;
   }
-  .nav-logo span { color: var(--cream); }
+  .nav-logo span { color: var(--cream); font-weight: 400; font-size: 12px; letter-spacing: 1px; }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--muted); text-decoration: none;
+    text-transform: uppercase; transition: color .3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
   .nav-pill {
     background: var(--gold-dim);
     border: 1px solid rgba(201,168,76,0.3);
@@ -78,63 +85,48 @@
     align-items: center; justify-content: center;
     text-align: center;
     padding: 120px 24px 80px;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
-
-  /* Radial gold glow */
   .hero::before {
     content: '';
     position: absolute;
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
     top: 50%; left: 50%; transform: translate(-50%, -55%);
     pointer-events: none;
   }
-
-  /* Diagonal decorative lines */
   .hero::after {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background-image:
-      linear-gradient(105deg, transparent 49.8%, rgba(201,168,76,0.06) 50%, transparent 50.2%),
-      linear-gradient(75deg, transparent 49.8%, rgba(201,168,76,0.04) 50%, transparent 50.2%);
+      linear-gradient(105deg, transparent 49.8%, rgba(201,168,76,0.05) 50%, transparent 50.2%),
+      linear-gradient(75deg, transparent 49.8%, rgba(201,168,76,0.03) 50%, transparent 50.2%);
     pointer-events: none;
   }
 
   .hero-eyebrow {
     font-family: 'Space Mono', monospace;
     font-size: 11px; letter-spacing: 4px;
-    color: var(--gold);
-    text-transform: uppercase;
+    color: var(--gold); text-transform: uppercase;
     margin-bottom: 28px;
     opacity: 0; animation: fadeUp .8s .2s forwards;
   }
-
   .hero-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(56px, 10vw, 120px);
+    font-size: clamp(44px, 9vw, 110px);
     font-weight: 300; line-height: 0.95;
-    letter-spacing: -2px;
-    margin-bottom: 32px;
+    letter-spacing: -2px; margin-bottom: 32px;
     opacity: 0; animation: fadeUp .8s .4s forwards;
     position: relative; z-index: 1;
   }
-  .hero-title em {
-    font-style: italic;
-    color: var(--gold-light);
-  }
-
+  .hero-title em { font-style: italic; color: var(--gold-light); }
   .hero-sub {
     font-size: 17px; font-weight: 300;
-    color: var(--muted);
-    max-width: 520px;
+    color: var(--muted); max-width: 560px;
     margin: 0 auto 48px;
     opacity: 0; animation: fadeUp .8s .6s forwards;
     position: relative; z-index: 1;
   }
-
   .hero-ctas {
     display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
     opacity: 0; animation: fadeUp .8s .8s forwards;
@@ -142,20 +134,18 @@
   }
 
   .btn-primary {
-    background: var(--gold);
-    color: var(--ink);
+    background: var(--gold); color: var(--ink);
     font-family: 'Space Mono', monospace;
     font-size: 12px; font-weight: 700; letter-spacing: 2px;
     padding: 16px 36px; border-radius: 4px;
     border: none; cursor: pointer;
     transition: all .3s; text-decoration: none;
-    text-transform: uppercase;
+    text-transform: uppercase; display: inline-block;
   }
   .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,168,76,0.3); }
 
   .btn-ghost {
-    background: transparent;
-    color: var(--cream);
+    background: transparent; color: var(--cream);
     font-family: 'Space Mono', monospace;
     font-size: 12px; letter-spacing: 2px;
     padding: 16px 36px; border-radius: 4px;
@@ -165,36 +155,21 @@
   }
   .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-  /* ─── COUNTDOWN STRIP ─── */
-  .countdown-strip {
+  /* ─── FORMULA STRIP ─── */
+  .formula-strip {
     background: var(--gold-dim);
     border-top: 1px solid rgba(201,168,76,0.2);
     border-bottom: 1px solid rgba(201,168,76,0.2);
-    padding: 20px 48px;
-    display: flex; align-items: center; justify-content: center; gap: 48px;
-    flex-wrap: wrap;
+    padding: 24px 48px;
+    text-align: center;
+    overflow: hidden;
   }
-  .countdown-label {
+  .formula-text {
     font-family: 'Space Mono', monospace;
-    font-size: 11px; letter-spacing: 3px; color: var(--gold);
-    text-transform: uppercase;
+    font-size: 12px; letter-spacing: 3px;
+    color: var(--gold-light); text-transform: uppercase;
   }
-  .countdown-units { display: flex; gap: 20px; }
-  .countdown-unit { text-align: center; }
-  .countdown-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px; font-weight: 600; color: var(--cream);
-    display: block; line-height: 1;
-  }
-  .countdown-sub {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 2px; color: var(--muted);
-    text-transform: uppercase;
-  }
-  .countdown-sep {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 36px; color: var(--gold); opacity: .4; align-self: flex-start; padding-top: 2px;
-  }
+  .formula-text span { color: var(--cream); margin: 0 8px; }
 
   /* ─── SECTIONS ─── */
   section { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
@@ -209,108 +184,38 @@
     content: ''; display: block;
     width: 24px; height: 1px; background: var(--gold);
   }
-
   .section-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 5vw, 60px);
+    font-size: clamp(32px, 5vw, 56px);
     font-weight: 300; line-height: 1.1;
     margin-bottom: 20px;
   }
   .section-title em { font-style: italic; color: var(--gold-light); }
-
   .section-body {
     font-size: 16px; font-weight: 300;
-    color: var(--muted);
-    max-width: 600px; line-height: 1.8;
+    color: var(--muted); max-width: 620px; line-height: 1.8;
   }
 
-  /* ─── SHARES GRID ─── */
-  .shares-section {
+  /* ─── STRATEGY CARDS ─── */
+  .strat-section {
     background: var(--ink2);
-    padding: 100px 0;
-    position: relative; overflow: hidden;
+    padding: 100px 0; position: relative; overflow: hidden;
   }
-  .shares-section::before {
+  .strat-section::before {
     content: '';
     position: absolute; right: -100px; top: -100px;
     width: 500px; height: 500px;
     background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
-  .shares-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .strat-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
 
-  .shares-grid {
+  .strat-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    margin: 60px 0 40px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; margin-top: 60px;
   }
-
-  .share-card {
-    aspect-ratio: 1;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: all .4s;
-    position: relative; overflow: hidden;
-  }
-  .share-card::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--gold) 0%, transparent 60%);
-    opacity: 0; transition: opacity .4s;
-  }
-  .share-card:hover::before { opacity: 0.12; }
-  .share-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
-
-  .share-card.taken {
-    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
-    border-color: rgba(201,168,76,0.35);
-  }
-  .share-card.taken::after {
-    content: '✓';
-    position: absolute; top: 6px; right: 8px;
-    font-size: 10px; color: var(--gold);
-    font-family: 'Space Mono', monospace;
-  }
-
-  .share-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 28px; font-weight: 600;
-    color: var(--cream);
-  }
-  .share-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 8px; letter-spacing: 2px;
-    color: var(--muted); text-transform: uppercase;
-    margin-top: 2px;
-  }
-
-  .shares-stats {
-    display: flex; gap: 40px; flex-wrap: wrap;
-    padding-top: 30px; border-top: 1px solid var(--border);
-  }
-  .stat { }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 40px; font-weight: 600;
-    color: var(--gold-light);
-  }
-  .stat-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 2px;
-    color: var(--muted); text-transform: uppercase;
-  }
-
-  /* ─── HOW IT WORKS / PHASES ─── */
-  .phases-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px; margin-top: 60px;
-  }
-  .phase-card {
+  .strat-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--r);
@@ -318,108 +223,134 @@
     position: relative; overflow: hidden;
     transition: transform .3s, border-color .3s;
   }
-  .phase-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.25); }
-
-  /* Decorative number watermark */
-  .phase-card::before {
+  .strat-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.3); }
+  .strat-card::before {
     content: attr(data-n);
     position: absolute; bottom: -20px; right: 10px;
     font-family: 'Cormorant Garamond', serif;
     font-size: 120px; font-weight: 600;
-    color: rgba(201,168,76,0.05);
+    color: rgba(201,168,76,0.04);
     line-height: 1; pointer-events: none;
   }
-
-  .phase-icon {
-    width: 44px; height: 44px;
+  .strat-icon {
+    width: 48px; height: 48px;
     background: var(--gold-dim);
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
     margin-bottom: 24px;
   }
-  .phase-icon svg { width: 20px; height: 20px; }
-
-  .phase-title {
+  .strat-icon svg { width: 22px; height: 22px; }
+  .strat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .strat-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; font-weight: 600;
+    font-size: 24px; font-weight: 600;
     color: var(--cream); margin-bottom: 12px;
   }
-  .phase-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .strat-body { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-  /* ─── PORTFOLIO CHART ─── */
-  .chart-section {
+  /* ─── PILLAR CARDS (numbers, leverage, etc.) ─── */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px; margin-top: 60px;
+  }
+  .pillar-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 40px 32px;
+    position: relative; overflow: hidden;
+    transition: transform .3s, border-color .3s;
+  }
+  .pillar-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.25); }
+  .pillar-card::before {
+    content: attr(data-icon);
+    position: absolute; top: 16px; right: 20px;
+    font-size: 40px; opacity: 0.08;
+    pointer-events: none;
+  }
+  .pillar-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 600;
+    color: var(--cream); margin-bottom: 14px; line-height: 1.2;
+  }
+  .pillar-body { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+
+  .pillar-list { list-style: none; padding: 0; }
+  .pillar-list li {
+    font-size: 13px; color: var(--cream);
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pillar-list li:last-child { border-bottom: none; }
+  .pillar-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── EXAMPLE BOX ─── */
+  .example-section {
     background: var(--ink2);
     padding: 100px 0;
   }
-  .chart-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-  .chart-layout {
-    display: grid; grid-template-columns: 1fr 1.2fr;
-    gap: 60px; align-items: center; margin-top: 60px;
-  }
-
-  .portfolio-donut { position: relative; }
-  .donut-label {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  .donut-label-main {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px; font-weight: 600; color: var(--cream);
-    display: block;
-  }
-  .donut-label-sub {
-    font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 2px; color: var(--muted);
-    text-transform: uppercase; display: block;
-  }
-
-  .portfolio-legend { display: flex; flex-direction: column; gap: 16px; }
-  .legend-item {
-    display: flex; align-items: center; gap: 16px;
-    padding: 20px 24px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--r);
-    transition: border-color .3s;
-    cursor: default;
-  }
-  .legend-item:hover { border-color: rgba(201,168,76,0.25); }
-
-  .legend-dot {
-    width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
-  }
-  .legend-name {
-    font-size: 14px; font-weight: 400; color: var(--cream);
-    flex: 1;
-  }
-  .legend-pct {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px; color: var(--gold-light);
-  }
-  .legend-desc { font-size: 12px; color: var(--muted); }
-
-  /* ─── GROWTH PROJECTION ─── */
-  .projection-section { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
-
-  .chart-bar-wrap {
+  .example-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+  .example-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
     margin-top: 60px;
+  }
+  .example-visual {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--r);
-    padding: 48px;
+    padding: 48px 40px;
     position: relative; overflow: hidden;
   }
-  .chart-bar-wrap::after {
-    content: 'PROYECCIÓN ESTIMADA';
+  .example-visual::after {
+    content: 'EJEMPLO ILUSTRATIVO';
     position: absolute; top: 16px; right: 20px;
     font-family: 'Space Mono', monospace;
-    font-size: 9px; letter-spacing: 3px;
+    font-size: 8px; letter-spacing: 3px;
     color: var(--muted); opacity: .5;
   }
+  .ex-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .ex-row:last-child { border-bottom: none; }
+  .ex-label {
+    font-size: 13px; color: var(--muted);
+  }
+  .ex-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 600;
+    color: var(--cream);
+  }
+  .ex-val.gold { color: var(--gold-light); }
+  .ex-val.small { font-size: 20px; }
 
-  /* ─── RISKS SECTION ─── */
+  .example-text { }
+  .example-text .pillar-list { margin-top: 24px; }
+
+  /* ─── RISKS ─── */
   .risks-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px; margin-top: 60px;
   }
   .risk-card {
@@ -428,19 +359,11 @@
     border: 1px solid var(--border);
     border-radius: var(--r);
     border-left: 3px solid var(--accent-coral);
-    position: relative;
-  }
-  .risk-card::before {
-    content: '!';
-    position: absolute; top: 24px; right: 20px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px; font-weight: 600;
-    color: rgba(232,113,74,0.08);
   }
   .risk-title { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 8px; }
   .risk-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-  /* ─── FOUNDERS CTA ─── */
+  /* ─── CTA ─── */
   .cta-section {
     text-align: center;
     padding: 120px 48px;
@@ -452,29 +375,17 @@
     background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
-
-  /* Geometric lines */
-  .cta-section::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(to right, transparent 49.9%, rgba(201,168,76,0.06) 50%, transparent 50.1%),
-      linear-gradient(to bottom, transparent 49.9%, rgba(201,168,76,0.04) 50%, transparent 50.1%);
-    pointer-events: none;
-  }
-
   .cta-big {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(48px, 8vw, 96px);
+    font-size: clamp(40px, 7vw, 80px);
     font-weight: 300; line-height: 1;
     margin-bottom: 24px;
     position: relative; z-index: 1;
   }
   .cta-big em { font-style: italic; color: var(--gold-light); }
-
   .cta-sub {
     font-size: 16px; color: var(--muted);
-    max-width: 480px; margin: 0 auto 48px;
+    max-width: 500px; margin: 0 auto 48px;
     position: relative; z-index: 1;
   }
 
@@ -486,7 +397,12 @@
     flex-wrap: wrap; gap: 16px;
   }
   footer p { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--muted); }
-  .footer-logo { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; color: var(--gold); letter-spacing: 3px; }
+  .footer-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--gold); letter-spacing: 3px;
+    text-decoration: none;
+  }
 
   /* ─── DISCLAIMER ─── */
   .disclaimer {
@@ -497,19 +413,16 @@
     margin: 0 48px 60px;
     max-width: 1104px; margin-left: auto; margin-right: auto;
   }
-  .disclaimer p {
-    font-size: 12px; color: rgba(232,113,74,0.8); line-height: 1.7;
-  }
+  .disclaimer p { font-size: 12px; color: rgba(232,113,74,0.8); line-height: 1.7; }
   .disclaimer strong { color: var(--accent-coral); }
 
   /* ─── DIVIDER ─── */
   .divider {
     height: 1px; background: var(--border);
-    margin: 0 48px;
-    position: relative;
+    margin: 0 48px; position: relative;
   }
   .divider::before {
-    content: '◆';
+    content: '\u25C6';
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     font-size: 8px; color: var(--gold);
@@ -521,31 +434,42 @@
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   .reveal {
     opacity: 0; transform: translateY(32px);
     transition: opacity .7s ease, transform .7s ease;
   }
   .reveal.visible { opacity: 1; transform: none; }
-  .reveal-delay-1 { transition-delay: .1s; }
-  .reveal-delay-2 { transition-delay: .2s; }
-  .reveal-delay-3 { transition-delay: .3s; }
-  .reveal-delay-4 { transition-delay: .4s; }
+  .d1 { transition-delay: .1s; }
+  .d2 { transition-delay: .2s; }
+  .d3 { transition-delay: .3s; }
+  .d4 { transition-delay: .4s; }
 
   /* ─── MOBILE ─── */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
+    .nav-links { display: none; }
     section { padding: 60px 20px; }
-    .shares-inner, .chart-inner { padding: 0 20px; }
-    .shares-grid { grid-template-columns: repeat(4, 1fr); }
-    .chart-layout { grid-template-columns: 1fr; }
-    .chart-bar-wrap { padding: 24px; }
-    .countdown-strip { gap: 20px; padding: 20px; }
+    .strat-inner, .example-inner { padding: 0 20px; }
+    .strat-grid { grid-template-columns: 1fr; }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .example-layout { grid-template-columns: 1fr; gap: 32px; }
+    .example-visual { padding: 32px 24px; }
+    .risks-grid { grid-template-columns: 1fr; }
+    .formula-strip { padding: 20px; }
+    .formula-text { font-size: 10px; letter-spacing: 2px; }
+    .cta-section { padding: 60px 20px; }
     footer { padding: 30px 20px; flex-direction: column; text-align: center; }
-    .disclaimer { margin: 0 20px 40px; }
+    .disclaimer { margin: 0 20px 40px; padding: 20px; }
     .divider { margin: 0 20px; }
-    .risks-grid, .phases-grid { grid-template-columns: 1fr; }
-    .cta-section, .projection-section { padding: 60px 20px; }
+  }
+  @media (max-width: 480px) {
+    .hero-title { letter-spacing: -1px; }
+    .hero-sub { font-size: 15px; }
+    .strat-card, .pillar-card { padding: 28px 20px; }
+    .ex-val { font-size: 22px; }
+    .ex-val.small { font-size: 16px; }
+    .formula-text { font-size: 9px; letter-spacing: 1px; word-spacing: 2px; }
+    .formula-text span { display: inline; margin: 0 4px; }
   }
 </style>
 </head>
@@ -553,87 +477,79 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">INVER<span>SO</span></div>
-  <a href="#unirse" class="nav-pill">UNIRSE AHORA →</a>
+  <a class="nav-logo" href="../..">PERU CORP <span>SA</span></a>
+  <div class="nav-links">
+    <a href="#estrategias">Estrategias</a>
+    <a href="#pilares">Pilares</a>
+    <a href="#ejemplo">Ejemplo</a>
+    <a href="#riesgos">Riesgos</a>
+  </div>
+  <a href="#contacto" class="nav-pill">CONTACTAR</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Ronda Fundadora · Solo 7 Lugares · Cierra 15 Abril</div>
-  <h1 class="hero-title">Tu familia<br>como <em>socios</em><br>de verdad</h1>
-  <p class="hero-sub">Una corporación de inversión privada construida con quienes más confías. Capital real, activos reales, resultados reales — juntos.</p>
+  <div class="hero-eyebrow">Vertical de Inversion &middot; Bienes Raices</div>
+  <h1 class="hero-title">Invertir en<br><em>bienes raices</em><br>con inteligencia</h1>
+  <p class="hero-sub">Guia estrategica para los socios de Peru Corp SA. Principios fundamentales, estrategias probadas y las metricas que importan para construir riqueza real con inmuebles.</p>
   <div class="hero-ctas">
-    <a href="#unirse" class="btn-primary">Reservar mi lugar</a>
-    <a href="#como-funciona" class="btn-ghost">Ver cómo funciona</a>
+    <a href="#estrategias" class="btn-primary">Ver estrategias</a>
+    <a href="#pilares" class="btn-ghost">Pilares clave</a>
   </div>
 </section>
 
-<!-- COUNTDOWN -->
-<div class="countdown-strip">
-  <div class="countdown-label">La ronda fundadora cierra en</div>
-  <div class="countdown-units">
-    <div class="countdown-unit">
-      <span class="countdown-num" id="cd-days">07</span>
-      <span class="countdown-sub">Días</span>
-    </div>
-    <div class="countdown-sep">:</div>
-    <div class="countdown-unit">
-      <span class="countdown-num" id="cd-hours">00</span>
-      <span class="countdown-sub">Horas</span>
-    </div>
-    <div class="countdown-sep">:</div>
-    <div class="countdown-unit">
-      <span class="countdown-num" id="cd-mins">00</span>
-      <span class="countdown-sub">Minutos</span>
-    </div>
-    <div class="countdown-sep">:</div>
-    <div class="countdown-unit">
-      <span class="countdown-num" id="cd-secs">00</span>
-      <span class="countdown-sub">Segundos</span>
-    </div>
-  </div>
+<!-- FORMULA STRIP -->
+<div class="formula-strip">
+  <div class="formula-text">Buenos Deals <span>+</span> Financiamiento Inteligente <span>+</span> Ejecucion Consistente <span>+</span> Tiempo <span>=</span> Riqueza Real</div>
 </div>
 
-<!-- WHAT IS THIS -->
-<section id="que-es">
-  <div class="section-tag reveal">Qué es INVERSO</div>
-  <h2 class="section-title reveal">Un fondo <em>micro-privado</em><br>para los tuyos</h2>
-  <p class="section-body reveal reveal-delay-1">INVERSO es una corporación de inversión fundada entre personas de confianza. No un banco, no un fondo de Wall Street. Es tu familia y amigos cercanos operando juntos como una empresa real, con capital combinado, decisiones compartidas y ganancias distribuidas entre todos.</p>
-</section>
+<!-- STRATEGIES -->
+<div class="strat-section" id="estrategias">
+  <div class="strat-inner">
+    <div class="section-tag reveal">Estrategias de Inversion</div>
+    <h2 class="section-title reveal">Elige una linea<br>y <em>dominala</em></h2>
+    <p class="section-body reveal d1">No intentes todo a la vez. Los inversores exitosos eligen una estrategia, la perfeccionan y escalan desde ahi. Estas son las cinco rutas mas comunes en bienes raices.</p>
 
-<!-- SHARES -->
-<div class="shares-section" id="acciones">
-  <div class="shares-inner">
-    <div class="section-tag reveal">Las 7 Acciones Fundadoras</div>
-    <h2 class="section-title reveal">Cada asiento vale<br><em>$100 dólares</em></h2>
-    <p class="section-body reveal reveal-delay-1">La corporación se forma con exactamente 7 socios fundadores. Una vez que los 7 lugares estén asignados y la estructura esté legalmente establecida, no habrá nuevos socios a este precio de entrada.</p>
-
-    <div class="shares-grid reveal reveal-delay-2">
-      <div class="share-card taken"><span class="share-num">#1</span><span class="share-label">Fundador</span></div>
-      <div class="share-card taken"><span class="share-num">#2</span><span class="share-label">Fundador</span></div>
-      <div class="share-card"><span class="share-num">#3</span><span class="share-label">Disponible</span></div>
-      <div class="share-card"><span class="share-num">#4</span><span class="share-label">Disponible</span></div>
-      <div class="share-card"><span class="share-num">#5</span><span class="share-label">Disponible</span></div>
-      <div class="share-card"><span class="share-num">#6</span><span class="share-label">Disponible</span></div>
-      <div class="share-card"><span class="share-num">#7</span><span class="share-label">Disponible</span></div>
-    </div>
-
-    <div class="shares-stats">
-      <div class="stat">
-        <div class="stat-num">$700</div>
-        <div class="stat-label">Capital inicial total</div>
+    <div class="strat-grid">
+      <div class="strat-card reveal d1" data-n="01">
+        <div class="strat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><rect x="9" y="13" width="6" height="8"/><rect x="9" y="9" width="2" height="2"/><rect x="13" y="9" width="2" height="2"/></svg>
+        </div>
+        <div class="strat-label">Estrategia 01</div>
+        <div class="strat-name">Buy & Hold</div>
+        <div class="strat-body">Comprar propiedades y mantenerlas generando ingreso mensual por renta. La estrategia mas segura y recomendada para comenzar. El inquilino paga tu hipoteca mientras el activo se aprecia con el tiempo.</div>
       </div>
-      <div class="stat">
-        <div class="stat-num">$100</div>
-        <div class="stat-label">Por acción fundadora</div>
+      <div class="strat-card reveal d2" data-n="02">
+        <div class="strat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="strat-label">Estrategia 02</div>
+        <div class="strat-name">Fix & Flip</div>
+        <div class="strat-body">Comprar propiedades subvaluadas, renovar estrategicamente y vender con ganancia. Requiere ojo para identificar oportunidades y un contratista confiable. Retornos rapidos pero mas riesgo por deal.</div>
       </div>
-      <div class="stat">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Lugares disponibles</div>
+      <div class="strat-card reveal d3" data-n="03">
+        <div class="strat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="strat-label">Estrategia 03</div>
+        <div class="strat-name">BRRRR</div>
+        <div class="strat-body">Buy, Rehab, Rent, Refinance, Repeat. El metodo mas poderoso para escalar: compras, renuevas, rentas, refinancias para sacar tu capital y repites el ciclo. Asi vas de 1 propiedad a 20+.</div>
       </div>
-      <div class="stat">
-        <div class="stat-num">14.3%</div>
-        <div class="stat-label">Participación por socio</div>
+      <div class="strat-card reveal d4" data-n="04">
+        <div class="strat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="strat-label">Estrategia 04</div>
+        <div class="strat-name">Rentas Cortas</div>
+        <div class="strat-body">Modelo Airbnb: mayor ingreso por noche pero mas gestion operativa. Ideal en zonas turisticas o ciudades con alta demanda de estancias cortas. Requiere atencion constante o un property manager.</div>
+      </div>
+      <div class="strat-card reveal d4" data-n="05">
+        <div class="strat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+        </div>
+        <div class="strat-label">Estrategia 05</div>
+        <div class="strat-name">Comercial</div>
+        <div class="strat-body">Oficinas, retail, multifamiliar. Mayor escala, mayor capital requerido, pero contratos mas largos y flujo de caja mas predecible. El siguiente nivel despues de dominar lo residencial.</div>
       </div>
     </div>
   </div>
@@ -641,232 +557,113 @@
 
 <div class="divider"></div>
 
-<!-- HOW IT WORKS -->
-<section id="como-funciona">
-  <div class="section-tag reveal">Cómo Funciona</div>
-  <h2 class="section-title reveal">Tres fases hacia<br>el <em>crecimiento</em></h2>
-  <p class="section-body reveal reveal-delay-1">El plan está dividido en fases claras. Cada fase tiene objetivos concretos antes de avanzar a la siguiente.</p>
+<!-- KEY PILLARS -->
+<section id="pilares">
+  <div class="section-tag reveal">Pilares Fundamentales</div>
+  <h2 class="section-title reveal">Lo que separa a los<br>que <em>construyen riqueza</em></h2>
+  <p class="section-body reveal d1">Estos principios no son opcionales. Son la diferencia entre un inversor que sobrevive las tormentas y uno que se ahoga en la primera.</p>
 
-  <div class="phases-grid">
-    <div class="phase-card reveal reveal-delay-1" data-n="1">
-      <div class="phase-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-      </div>
-      <div class="phase-title">Fase 1 — Fundación</div>
-      <div class="phase-body">Los 7 socios reservan su lugar antes del 15 de abril. Se forma legalmente la corporación, se abre la cuenta bancaria corporativa y se documenta la estructura de gobierno.</div>
+  <div class="pillar-grid">
+    <div class="pillar-card reveal d1" data-icon="$">
+      <div class="pillar-num">Pilar 01</div>
+      <div class="pillar-title">Cash Flow primero,<br>apreciacion despues</div>
+      <div class="pillar-body">El error mas comun es apostar solo a que el precio suba. Un buen deal genera flujo positivo desde el dia uno: la renta mensual supera la hipoteca mas todos los gastos.</div>
+      <ul class="pillar-list">
+        <li>Proteccion en mercados bajistas</li>
+        <li>Escalamiento seguro y sostenible</li>
+        <li>Independencia del ciclo del mercado</li>
+      </ul>
     </div>
-    <div class="phase-card reveal reveal-delay-2" data-n="2">
-      <div class="phase-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      </div>
-      <div class="phase-title">Fase 2 — Primer Activo</div>
-      <div class="phase-body">Con el capital combinado y la estructura lista, el grupo vota la primera inversión. El foco inicial: una propiedad de renta, un activo de glamping o financiamiento de equipo dental — donde el grupo tenga ventaja real.</div>
+    <div class="pillar-card reveal d2" data-icon="#">
+      <div class="pillar-num">Pilar 02</div>
+      <div class="pillar-title">Domina los numeros<br>o no inviertas</div>
+      <div class="pillar-body">Cada deal se analiza como un negocio. Si los numeros no funcionan en papel, no van a funcionar en la realidad. Punto.</div>
+      <ul class="pillar-list">
+        <li>Cap Rate: retorno basado en ingreso</li>
+        <li>Cash-on-Cash: ROI sobre tu capital real</li>
+        <li>Regla del 1%: renta mensual = 1% del precio</li>
+        <li>Incluir reparaciones, vacancia, impuestos</li>
+      </ul>
     </div>
-    <div class="phase-card reveal reveal-delay-3" data-n="3">
-      <div class="phase-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-      </div>
-      <div class="phase-title">Fase 3 — Crecimiento</div>
-      <div class="phase-body">Las ganancias se reinvierten en nuevos activos. El portafolio se expande, se emiten nuevas acciones a valorizaciones más altas, y los socios fundadores ven su participación original apreciarse.</div>
+    <div class="pillar-card reveal d3" data-icon="&#x21C5;">
+      <div class="pillar-num">Pilar 03</div>
+      <div class="pillar-title">Apalancamiento<br>inteligente</div>
+      <div class="pillar-body">La magia de bienes raices: controlas un activo grande con capital pequeno. Pero el sobre-apalancamiento mata. El balance es todo.</div>
+      <ul class="pillar-list">
+        <li>20% de enganche, banco financia el 80%</li>
+        <li>Mantener reservas de 3-6 meses</li>
+        <li>Nunca sobrepasar tu capacidad de pago</li>
+      </ul>
+    </div>
+    <div class="pillar-card reveal d4" data-icon="&#x2191;">
+      <div class="pillar-num">Pilar 04</div>
+      <div class="pillar-title">Forzar la<br>apreciacion</div>
+      <div class="pillar-body">Los mejores inversores no esperan que el mercado suba. Crean valor activamente en cada propiedad que tocan.</div>
+      <ul class="pillar-list">
+        <li>Renovar cocinas y banos</li>
+        <li>Mejorar fachada y curb appeal</li>
+        <li>Subir rentas a nivel de mercado</li>
+        <li>Convertir espacios: agregar habitaciones</li>
+      </ul>
+    </div>
+    <div class="pillar-card reveal d4" data-icon="&#x27F3;">
+      <div class="pillar-num">Pilar 05</div>
+      <div class="pillar-title">Escalar con<br>sistemas</div>
+      <div class="pillar-body">No se trata de comprar propiedades al azar. Se trata de construir un portafolio con estrategia, reinvertir ganancias, refinanciar para sacar equity y repetir.</div>
+      <ul class="pillar-list">
+        <li>1 propiedad &rarr; 5 &rarr; 20+</li>
+        <li>Reinversion sistematica de utilidades</li>
+        <li>Construir equipo: agente, contratista, CPA</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- PORTFOLIO CHART -->
-<div class="chart-section" id="portafolio">
-  <div class="chart-inner">
-    <div class="section-tag reveal">Portafolio Objetivo</div>
-    <h2 class="section-title reveal">Diversificado por<br><em>diseño</em></h2>
+<!-- EXAMPLE -->
+<div class="example-section" id="ejemplo">
+  <div class="example-inner">
+    <div class="section-tag reveal">Ejemplo Practico</div>
+    <h2 class="section-title reveal">Como se construye<br><em>riqueza real</em></h2>
+    <p class="section-body reveal d1">Un ejemplo simplificado de como una sola propiedad puede generar riqueza a traves del tiempo, sin contar la expansion del portafolio.</p>
 
-    <div class="chart-layout">
-      <div class="portfolio-donut reveal">
-        <svg viewBox="0 0 260 260" width="100%" style="max-width:300px;display:block;margin:0 auto;">
-          <defs>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <!-- Donut segments (r=90, circumference≈565) -->
-          <circle cx="130" cy="130" r="90" fill="none" stroke="#1e2333" stroke-width="44"/>
-          <!-- Real Estate 35% -->
-          <circle cx="130" cy="130" r="90" fill="none" stroke="#c9a84c" stroke-width="44"
-            stroke-dasharray="197.9 565.5" stroke-dashoffset="141.4" filter="url(#glow)"
-            style="transition:stroke-dasharray 1.5s ease"/>
-          <!-- Dental 25% -->
-          <circle cx="130" cy="130" r="90" fill="none" stroke="#3a7bd5" stroke-width="44"
-            stroke-dasharray="141.4 565.5" stroke-dashoffset="-56.5"
-            style="transition:stroke-dasharray 1.5s ease"/>
-          <!-- Glamping 20% -->
-          <circle cx="130" cy="130" r="90" fill="none" stroke="#2ecc8a" stroke-width="44"
-            stroke-dasharray="113.1 565.5" stroke-dashoffset="-197.9"
-            style="transition:stroke-dasharray 1.5s ease"/>
-          <!-- Non-Profit 10% -->
-          <circle cx="130" cy="130" r="90" fill="none" stroke="#e8714a" stroke-width="44"
-            stroke-dasharray="56.5 565.5" stroke-dashoffset="-311"/>
-          <!-- Oportunidades 10% -->
-          <circle cx="130" cy="130" r="90" fill="none" stroke="#9b59b6" stroke-width="44"
-            stroke-dasharray="56.5 565.5" stroke-dashoffset="-367.6"/>
-          <!-- Center hole -->
-          <circle cx="130" cy="130" r="62" fill="#141720"/>
-          <text x="130" y="123" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="26" fill="#f0ead8" font-weight="600">5</text>
-          <text x="130" y="140" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(240,234,216,0.5)" letter-spacing="2">SECTORES</text>
-        </svg>
+    <div class="example-layout">
+      <div class="example-visual reveal d2">
+        <div class="ex-row">
+          <span class="ex-label">Enganche inicial</span>
+          <span class="ex-val">$50K</span>
+        </div>
+        <div class="ex-row">
+          <span class="ex-label">Cash flow mensual</span>
+          <span class="ex-val gold">$300</span>
+        </div>
+        <div class="ex-row">
+          <span class="ex-label">Cash flow anual</span>
+          <span class="ex-val gold small">$3,600</span>
+        </div>
+        <div class="ex-row">
+          <span class="ex-label">Apreciacion estimada</span>
+          <span class="ex-val small">3-5% / ano</span>
+        </div>
+        <div class="ex-row">
+          <span class="ex-label">Pago de hipoteca</span>
+          <span class="ex-val small" style="color:var(--accent-green);">Inquilino</span>
+        </div>
       </div>
 
-      <div class="portfolio-legend reveal reveal-delay-1">
-        <div class="legend-item">
-          <div class="legend-dot" style="background:#c9a84c"></div>
-          <div>
-            <div class="legend-name">🏘 Bienes Raíces</div>
-            <div class="legend-desc">Rentas, fix & flip, microlotes</div>
-          </div>
-          <div class="legend-pct">35%</div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:#3a7bd5"></div>
-          <div>
-            <div class="legend-name">🦷 Clínicas Dentales</div>
-            <div class="legend-desc">Equipo, expansión, equity</div>
-          </div>
-          <div class="legend-pct">25%</div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:#2ecc8a"></div>
-          <div>
-            <div class="legend-name">⛺ Glamping / Turismo</div>
-            <div class="legend-desc">Estadías boutique, experiencias</div>
-          </div>
-          <div class="legend-pct">20%</div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:#e8714a"></div>
-          <div>
-            <div class="legend-name">❤️ Brazo No Lucrativo</div>
-            <div class="legend-desc">Impacto social + ventajas fiscales</div>
-          </div>
-          <div class="legend-pct">10%</div>
-        </div>
-        <div class="legend-item">
-          <div class="legend-dot" style="background:#9b59b6"></div>
-          <div>
-            <div class="legend-name">⚡ Jugadas Oportunistas</div>
-            <div class="legend-desc">Capital flexible, nuevas verticales</div>
-          </div>
-          <div class="legend-pct">10%</div>
-        </div>
+      <div class="example-text reveal d3">
+        <div class="pillar-title">El resultado a largo plazo</div>
+        <div class="pillar-body">Despues de anos, eres dueno de un activo de alto valor con ingreso pasivo. El inquilino pago tu hipoteca. La propiedad se aprecio. Y tu capital inicial se multiplico varias veces.</div>
+        <ul class="pillar-list" style="margin-top:24px;">
+          <li>Pago del prestamo: tu inquilino paga la hipoteca</li>
+          <li>Apreciacion: el valor sube con el tiempo</li>
+          <li>Ventajas fiscales: depreciacion y deducciones</li>
+          <li>Escalamiento: repite con multiples propiedades</li>
+        </ul>
+        <p style="margin-top:24px;font-size:13px;color:var(--gold-light);font-family:'Space Mono',monospace;letter-spacing:1px;">Multiplica por multiples propiedades = libertad financiera</p>
       </div>
     </div>
   </div>
 </div>
-
-<!-- GROWTH PROJECTION -->
-<div class="projection-section" id="proyeccion">
-  <div class="section-tag reveal">Proyección de Crecimiento</div>
-  <h2 class="section-title reveal">El poder del<br><em>capital colectivo</em></h2>
-  <p class="section-body reveal reveal-delay-1">Con reinversión consistente de ganancias y apalancamiento estratégico, la siguiente gráfica muestra el crecimiento estimado del portafolio a 5 años. Las cifras son ilustrativas y dependen del desempeño real de los activos.</p>
-
-  <div class="chart-bar-wrap reveal reveal-delay-2">
-    <svg id="bar-chart" viewBox="0 0 900 320" width="100%" style="overflow:visible">
-      <defs>
-        <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#c9a84c"/>
-          <stop offset="100%" stop-color="rgba(201,168,76,0.2)"/>
-        </linearGradient>
-        <linearGradient id="barGrad2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#3a7bd5"/>
-          <stop offset="100%" stop-color="rgba(58,123,213,0.1)"/>
-        </linearGradient>
-      </defs>
-
-      <!-- Grid lines -->
-      <line x1="60" y1="20" x2="60" y2="260" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-      <line x1="60" y1="260" x2="880" y2="260" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
-      <line x1="60" y1="200" x2="880" y2="200" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
-      <line x1="60" y1="140" x2="880" y2="140" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
-      <line x1="60" y1="80" x2="880" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
-
-      <!-- Y axis labels -->
-      <text x="50" y="265" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.3)">$0</text>
-      <text x="50" y="205" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.3)">$5K</text>
-      <text x="50" y="145" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.3)">$10K</text>
-      <text x="50" y="85" text-anchor="end" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.3)">$15K</text>
-
-      <!-- Bars + labels: years -->
-      <!-- Year 0 -->
-      <rect class="bar-anim" x="90" y="248" width="60" height="12" rx="3" fill="url(#barGrad)" opacity="0"/>
-      <text x="120" y="280" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.4)">Año 0</text>
-      <text x="120" y="242" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" fill="#c9a84c" opacity="0" class="bar-val">$700</text>
-
-      <!-- Year 1 -->
-      <rect class="bar-anim" x="230" y="230" width="60" height="30" rx="3" fill="url(#barGrad)" opacity="0"/>
-      <text x="260" y="280" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.4)">Año 1</text>
-      <text x="260" y="224" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" fill="#c9a84c" opacity="0" class="bar-val">~$2K</text>
-
-      <!-- Year 2 -->
-      <rect class="bar-anim" x="370" y="190" width="60" height="70" rx="3" fill="url(#barGrad)" opacity="0"/>
-      <text x="400" y="280" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.4)">Año 2</text>
-      <text x="400" y="184" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" fill="#c9a84c" opacity="0" class="bar-val">~$5K</text>
-
-      <!-- Year 3 -->
-      <rect class="bar-anim" x="510" y="140" width="60" height="120" rx="3" fill="url(#barGrad)" opacity="0"/>
-      <text x="540" y="280" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.4)">Año 3</text>
-      <text x="540" y="134" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="12" fill="#c9a84c" opacity="0" class="bar-val">~$10K</text>
-
-      <!-- Year 5 -->
-      <rect class="bar-anim" x="650" y="60" width="60" height="200" rx="3" fill="url(#barGrad2)" opacity="0"/>
-      <text x="680" y="280" text-anchor="middle" font-family="Space Mono,monospace" font-size="10" fill="rgba(240,234,216,0.4)">Año 5</text>
-      <text x="680" y="54" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" fill="#3a7bd5" opacity="0" class="bar-val">~$20K+</text>
-
-      <!-- Trend line -->
-      <polyline id="trend-line" points="120,254 260,245 400,225 540,200 680,160"
-        fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1.5" stroke-dasharray="4,4"
-        opacity="0" style="transition:opacity .5s 2s"/>
-    </svg>
-
-    <div style="display:flex;gap:20px;margin-top:16px;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div style="width:12px;height:12px;border-radius:2px;background:#c9a84c;"></div>
-        <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;">PORTAFOLIO BASE</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div style="width:12px;height:12px;border-radius:2px;background:#3a7bd5;"></div>
-        <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;">CON APALANCAMIENTO</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- GOVERNANCE -->
-<section id="gobierno">
-  <div class="section-tag reveal">Gobierno Corporativo</div>
-  <h2 class="section-title reveal">Decisiones <em>transparentes</em><br>entre socios</h2>
-  <p class="section-body reveal reveal-delay-1" style="margin-bottom:48px;">La estructura de gobierno es simple pero sólida. Todos los socios tienen voz. Las decisiones grandes requieren mayoría.</p>
-
-  <div class="phases-grid">
-    <div class="phase-card reveal" data-n="V">
-      <div class="phase-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <div class="phase-title">Votación por mayoría</div>
-      <div class="phase-body">Cada socio tiene 1 voto por acción. Las decisiones de inversión requieren mayoría simple (4 de 7). Decisiones estructurales requieren unanimidad.</div>
-    </div>
-    <div class="phase-card reveal reveal-delay-1" data-n="R">
-      <div class="phase-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="phase-title">Roles claros</div>
-      <div class="phase-body">Operadores: gestionan activos activamente. Inversionistas: aportan capital y votan. Asesores: aportan experiencia en sectores específicos sin responsabilidad operativa.</div>
-    </div>
-    <div class="phase-card reveal reveal-delay-2" data-n="S">
-      <div class="phase-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-      </div>
-      <div class="phase-title">Acuerdo de socios</div>
-      <div class="phase-body">Antes del primer centavo invertido, el grupo firma un acuerdo que cubre: salida de socios, dilución, resolución de conflictos y distribución de ganancias.</div>
-    </div>
-  </div>
-</section>
 
 <div class="divider"></div>
 
@@ -874,138 +671,63 @@
 <section id="riesgos">
   <div class="section-tag reveal">Transparencia Total</div>
   <h2 class="section-title reveal">Los riesgos,<br><em>sin rodeos</em></h2>
-  <p class="section-body reveal reveal-delay-1">Somos directos contigo porque somos familia. Estas son las consideraciones reales que hay que trabajar juntos.</p>
+  <p class="section-body reveal d1">Bienes raices no es dinero garantizado. El objetivo no es evitar el riesgo — es manejarlo con inteligencia.</p>
 
   <div class="risks-grid">
     <div class="risk-card reveal">
-      <div class="risk-title">⚖️ Constitución legal</div>
-      <div class="risk-body">Antes de cualquier inversión, consultamos un abogado para estructurar correctamente la corporación y cumplir con todas las regulaciones aplicables.</div>
+      <div class="risk-title">Inquilinos problematicos</div>
+      <div class="risk-body">Seleccionar mal puede costarte meses de renta perdida y danos a la propiedad. El screening riguroso es tu primera linea de defensa.</div>
     </div>
-    <div class="risk-card reveal reveal-delay-1">
-      <div class="risk-title">🤝 Conflictos entre socios</div>
-      <div class="risk-body">Mezclar familia y dinero tiene riesgos relacionales. Por eso el acuerdo de socios define por escrito cómo se manejan desacuerdos antes de que ocurran.</div>
+    <div class="risk-card reveal d1">
+      <div class="risk-title">Vacancia prolongada</div>
+      <div class="risk-body">Meses sin inquilino significan gastos sin ingresos. Por eso las reservas de 3-6 meses son obligatorias, no opcionales.</div>
     </div>
-    <div class="risk-card reveal reveal-delay-2">
-      <div class="risk-title">📉 Capital limitado inicial</div>
-      <div class="risk-body">$700 es un punto de partida, no un fondo completo. La estrategia incluye apalancamiento (deuda estratégica) para acceder a activos reales desde el inicio.</div>
+    <div class="risk-card reveal d2">
+      <div class="risk-title">Reparaciones inesperadas</div>
+      <div class="risk-body">Un techo nuevo, plomeria, problemas estructurales. Siempre hay que presupuestar un margen para lo inesperado en cada deal.</div>
     </div>
-    <div class="risk-card reveal reveal-delay-3">
-      <div class="risk-title">🎯 Ejecución multi-sector</div>
-      <div class="risk-body">Invertir en múltiples industrias requiere experiencia específica. Comenzamos donde el grupo tenga ventaja real, no donde simplemente suene bien.</div>
+    <div class="risk-card reveal d3">
+      <div class="risk-title">Ciclos del mercado</div>
+      <div class="risk-body">Los mercados bajan. Si tu deal depende solo de apreciacion, una correccion te puede destruir. El cash flow positivo es tu escudo.</div>
+    </div>
+    <div class="risk-card reveal d4">
+      <div class="risk-title">Mal financiamiento</div>
+      <div class="risk-body">Tasas variables, sobre-apalancamiento o prestamos mal estructurados pueden convertir un buen deal en una trampa financiera.</div>
     </div>
   </div>
 </section>
 
 <!-- DISCLAIMER -->
 <div class="disclaimer">
-  <p><strong>Aviso importante:</strong> Este es un proyecto privado entre personas de confianza. No es una oferta pública de valores ni una asesoría financiera regulada. Toda participación debe ser revisada por un profesional legal antes de formalizarse. Los rendimientos proyectados son estimados y no están garantizados.</p>
+  <p><strong>Aviso importante:</strong> Este contenido es educativo e informativo para los socios de Peru Corp SA. No constituye asesoria financiera, legal o de inversiones. Todo deal debe analizarse individualmente y toda decision de inversion debe tomarse con asesoria profesional. Los rendimientos mencionados son ilustrativos y no estan garantizados.</p>
 </div>
 
 <!-- CTA -->
-<div class="cta-section" id="unirse">
-  <div class="section-tag reveal" style="justify-content:center">Únete a los Fundadores</div>
-  <div class="cta-big reveal">Solo quedan<br><em>5 lugares</em></div>
-  <p class="cta-sub reveal reveal-delay-1">Si esto te interesa, habla directamente con nosotros. Te explicamos cada detalle, respondes tus preguntas, y decidimos juntos si tiene sentido para ti.</p>
-  <div class="reveal reveal-delay-2">
-    <a href="mailto:inverso@tudominio.com" class="btn-primary" style="display:inline-block;margin-bottom:16px;">Quiero saber más →</a>
-    <p style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);margin-top:16px;">RONDA CIERRA · 15 DE ABRIL DE 2025</p>
+<div class="cta-section" id="contacto">
+  <div class="section-tag reveal" style="justify-content:center">Siguiente Paso</div>
+  <div class="cta-big reveal">Piensa a<br><em>largo plazo</em></div>
+  <p class="cta-sub reveal d1">La riqueza real en bienes raices viene del pago del prestamo, la apreciacion, las ventajas fiscales y el crecimiento del portafolio. No de un golpe de suerte.</p>
+  <div class="reveal d2">
+    <a href="../.." class="btn-primary" style="margin-bottom:16px;">Volver a Peru Corp SA</a>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">INVERSO</div>
-  <p>Colectivo Privado de Inversión · Ronda Fundadora 2025</p>
-  <p>Hecho con confianza · Para los nuestros</p>
+  <a class="footer-logo" href="../..">PERU CORP SA</a>
+  <p>Vertical de Bienes Raices &middot; Guia Estrategica</p>
+  <p>Material exclusivo para socios</p>
 </footer>
 
 <script>
-  // ─── COUNTDOWN ───
-  function updateCountdown() {
-    const target = new Date('2025-04-15T23:59:59');
-    const now = new Date();
-    const diff = target - now;
-
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent = '00';
-      document.getElementById('cd-hours').textContent = '00';
-      document.getElementById('cd-mins').textContent = '00';
-      document.getElementById('cd-secs').textContent = '00';
-      return;
-    }
-
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-
-    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
-    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
   // ─── SCROLL REVEAL ───
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
+      if (e.isIntersecting) e.target.classList.add('visible');
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
-
-  // ─── BAR CHART ANIMATION ───
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const bars = document.querySelectorAll('.bar-anim');
-        const vals = document.querySelectorAll('.bar-val');
-        bars.forEach((bar, i) => {
-          setTimeout(() => {
-            bar.style.transition = 'opacity 0.5s ease, height 0.8s ease, y 0.8s ease';
-            bar.style.opacity = '1';
-            // Animate height using setAttribute
-            const origY = parseFloat(bar.getAttribute('y'));
-            const origH = parseFloat(bar.getAttribute('height'));
-            bar.setAttribute('y', origY + origH);
-            bar.setAttribute('height', '0');
-            requestAnimationFrame(() => {
-              bar.style.transition = 'opacity 0.5s, height 0.8s, y 0.8s';
-              setTimeout(() => {
-                bar.setAttribute('y', origY);
-                bar.setAttribute('height', origH);
-              }, 50);
-            });
-            if (vals[i]) {
-              setTimeout(() => { vals[i].style.opacity = '1'; }, 400);
-            }
-          }, i * 200);
-        });
-        // Show trend line
-        setTimeout(() => {
-          document.getElementById('trend-line').style.opacity = '0.6';
-        }, 1200);
-        barObserver.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-
-  const chartEl = document.getElementById('bar-chart');
-  if (chartEl) barObserver.observe(chartEl);
-
-  // ─── SHARE CARD HOVER PULSE ───
-  document.querySelectorAll('.share-card:not(.taken)').forEach(card => {
-    card.addEventListener('click', () => {
-      card.style.borderColor = 'rgba(201,168,76,0.6)';
-      card.style.background = 'rgba(201,168,76,0.08)';
-      setTimeout(() => {
-        card.style.borderColor = '';
-        card.style.background = '';
-      }, 600);
-    });
-  });
 </script>
 </body>
 </html>

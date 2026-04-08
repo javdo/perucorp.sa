@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="es" class="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vertical Dental — Peru Corp SA</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --void: #060a14;
+  --deep: #0a1020;
+  --surface: #0f1729;
+  --card: #131d33;
+  --card-hover: #182440;
+  --border: rgba(45,212,168,0.08);
+  --border-hover: rgba(45,212,168,0.2);
+  --teal: #2dd4a8;
+  --teal-light: #5eecc6;
+  --teal-dim: rgba(45,212,168,0.1);
+  --teal-glow: rgba(45,212,168,0.15);
+  --white: #e8edf5;
+  --muted: rgba(232,237,245,0.45);
+  --faint: rgba(232,237,245,0.08);
+  --coral: #f07068;
+  --coral-dim: rgba(240,112,104,0.1);
+  --blue: #4a90d9;
+  --r: 12px;
+  --r-sm: 8px;
+}
+
+/* ─── LIGHT THEME ─── */
+html.light {
+  --void: #f5f7fa;
+  --deep: #eef1f6;
+  --surface: #e8ecf2;
+  --card: #ffffff;
+  --card-hover: #f8f9fb;
+  --border: rgba(45,168,140,0.12);
+  --border-hover: rgba(45,168,140,0.3);
+  --teal: #1a9e80;
+  --teal-light: #15836a;
+  --teal-dim: rgba(26,158,128,0.08);
+  --teal-glow: rgba(26,158,128,0.1);
+  --white: #1a2030;
+  --muted: rgba(26,32,48,0.5);
+  --faint: rgba(26,32,48,0.06);
+  --coral: #d4564e;
+  --coral-dim: rgba(212,86,78,0.07);
+  --blue: #3578c4;
+}
+html.light body { -webkit-font-smoothing: auto; }
+html.light body::after { opacity: 0.15; }
+html.light nav {
+  background: linear-gradient(180deg, rgba(245,247,250,0.96) 0%, rgba(245,247,250,0.7) 70%, transparent 100%);
+}
+html.light .hero-aura {
+  background: radial-gradient(circle, rgba(26,158,128,0.08) 0%, rgba(26,158,128,0.03) 40%, transparent 70%);
+}
+html.light .hero-grid {
+  background-image:
+    linear-gradient(rgba(26,158,128,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,158,128,0.05) 1px, transparent 1px);
+}
+html.light .hero-cross { opacity: 0.08; }
+html.light .nav-cta { color: #fff; }
+html.light .nav-cta:hover { color: var(--teal); }
+html.light .model-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+html.light .model-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.06); }
+html.light .pillar-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+html.light .pillar-card:hover { box-shadow: 0 12px 36px rgba(0,0,0,0.06); }
+html.light .sys-visual { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+html.light .metric-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+html.light .adv-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+html.light .compare-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+html.light .risk-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+html.light .hero-title i::after { opacity: .2; }
+html.light .divider::before { background: var(--deep); }
+html.light .roadmap::before {
+  background: linear-gradient(180deg, var(--teal), rgba(26,158,128,0.15));
+}
+html.light .roadmap-dot { background: var(--void); }
+html.light .formula { background: rgba(26,158,128,0.06); border-color: rgba(26,158,128,0.12); }
+html.light .btn-fill { color: #fff; }
+html.light .btn-fill:hover { color: var(--teal); }
+html.light .cta::before {
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(26,158,128,0.06) 0%, transparent 70%);
+}
+html.light .model-card.recommended {
+  background: linear-gradient(135deg, rgba(26,158,128,0.06), var(--card));
+}
+html.light .compare-card.highlight {
+  background: linear-gradient(135deg, rgba(26,158,128,0.05), var(--card));
+}
+
+/* Smooth theme transition */
+html, body, nav, .model-card, .pillar-card, .sys-visual, .metric-card,
+.risk-card, .compare-card, .adv-card, .formula, .sec-dark, .disclaimer,
+.roadmap-dot, .sys-check, .model-icon, .adv-icon, .risk-icon, .nav-cta,
+.btn-fill, .btn-outline, .sys-quote, .divider::before, footer {
+  transition: background .4s, color .4s, border-color .4s, box-shadow .4s;
+}
+
+/* ─── THEME TOGGLE ─── */
+.theme-toggle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--faint);
+  background: transparent;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .3s, background .3s;
+  margin-right: 12px;
+  position: relative;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.theme-toggle svg { width: 16px; height: 16px; transition: transform .4s; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+html.light .theme-toggle .icon-sun { display: block; }
+html.light .theme-toggle .icon-moon { display: none; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── GRAIN OVERLAY ─── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: 0.5;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px;
+  background: linear-gradient(180deg, rgba(6,10,20,0.96) 0%, rgba(6,10,20,0.7) 70%, transparent 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.nav-mark {
+  width: 32px; height: 32px;
+  border: 1.5px solid var(--teal);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.nav-mark svg { width: 16px; height: 16px; }
+.nav-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; font-weight: 500;
+  color: var(--white); letter-spacing: 2px;
+}
+.nav-name span { color: var(--teal); }
+.nav-mid {
+  display: flex; gap: 36px; align-items: center;
+}
+.nav-mid a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--muted); text-decoration: none;
+  text-transform: uppercase;
+  transition: color .3s;
+  position: relative;
+}
+.nav-mid a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px; background: var(--teal);
+  transform: scaleX(0); transition: transform .3s;
+}
+.nav-mid a:hover { color: var(--teal); }
+.nav-mid a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 500; letter-spacing: 2px;
+  color: var(--void);
+  background: var(--teal);
+  padding: 10px 22px; border-radius: 100px;
+  text-decoration: none; text-transform: uppercase;
+  transition: all .3s;
+  border: 1px solid var(--teal);
+}
+.nav-cta:hover {
+  background: transparent; color: var(--teal);
+  box-shadow: 0 0 24px var(--teal-glow);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 140px 24px 100px;
+  position: relative; overflow: hidden;
+}
+
+/* Radial teal aura */
+.hero-aura {
+  position: absolute;
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(45,212,168,0.06) 0%, rgba(45,212,168,0.02) 40%, transparent 70%);
+  top: 45%; left: 50%; transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Grid pattern */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(45,212,168,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,212,168,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Floating cross elements */
+.hero-cross {
+  position: absolute;
+  width: 40px; height: 40px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+.hero-cross:nth-child(3) { top: 18%; left: 12%; transform: rotate(15deg); }
+.hero-cross:nth-child(4) { top: 25%; right: 15%; transform: rotate(-20deg); }
+.hero-cross:nth-child(5) { bottom: 30%; left: 20%; transform: rotate(30deg); }
+.hero-cross:nth-child(6) { bottom: 20%; right: 10%; transform: rotate(-10deg); }
+
+.hero-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 12px;
+  opacity: 0; animation: fadeUp .9s .2s forwards;
+}
+.hero-badge::before, .hero-badge::after {
+  content: ''; width: 20px; height: 1px; background: var(--teal); opacity: .4;
+}
+
+.hero-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(48px, 9vw, 120px);
+  font-weight: 400; line-height: 0.92;
+  letter-spacing: -2px;
+  margin-bottom: 36px;
+  opacity: 0; animation: fadeUp .9s .35s forwards;
+  position: relative; z-index: 2;
+}
+.hero-title i {
+  font-style: italic;
+  color: var(--teal);
+  position: relative;
+}
+.hero-title i::after {
+  content: '';
+  position: absolute; bottom: 4px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  opacity: .3;
+}
+
+.hero-sub {
+  font-size: 17px; font-weight: 300;
+  color: var(--muted);
+  max-width: 540px; margin: 0 auto 52px;
+  opacity: 0; animation: fadeUp .9s .5s forwards;
+  position: relative; z-index: 2;
+  line-height: 1.8;
+}
+
+.hero-ctas {
+  display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fadeUp .9s .65s forwards;
+  position: relative; z-index: 2;
+}
+
+.btn-fill {
+  background: var(--teal); color: var(--void);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 500; letter-spacing: 2px;
+  padding: 16px 36px; border-radius: 6px;
+  border: 1px solid var(--teal);
+  cursor: pointer; transition: all .35s;
+  text-decoration: none; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-fill:hover {
+  background: transparent; color: var(--teal);
+  box-shadow: 0 0 40px rgba(45,212,168,0.15);
+  transform: translateY(-2px);
+}
+.btn-fill svg { width: 14px; height: 14px; }
+
+.btn-outline {
+  background: transparent; color: var(--white);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 2px;
+  padding: 16px 36px; border-radius: 6px;
+  border: 1px solid var(--faint);
+  cursor: pointer; transition: all .35s;
+  text-decoration: none; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover {
+  border-color: var(--teal); color: var(--teal);
+  transform: translateY(-2px);
+}
+
+/* ─── FORMULA STRIP ─── */
+.formula {
+  background: var(--teal-dim);
+  border-top: 1px solid rgba(45,212,168,0.12);
+  border-bottom: 1px solid rgba(45,212,168,0.12);
+  padding: 28px 48px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.formula::before {
+  content: '';
+  position: absolute; left: -200px; top: 0; bottom: 0; width: 100px;
+  background: linear-gradient(90deg, transparent, rgba(45,212,168,0.08), transparent);
+  animation: formulaScan 8s linear infinite;
+}
+@keyframes formulaScan { to { left: calc(100% + 200px); } }
+.formula-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--teal-light);
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+.formula-text .op {
+  color: var(--white); margin: 0 6px;
+  font-weight: 500;
+}
+
+/* ─── SECTIONS ─── */
+.sec {
+  padding: 120px 48px;
+  max-width: 1200px; margin: 0 auto;
+}
+.sec-dark {
+  background: var(--deep);
+  padding: 120px 0;
+}
+.sec-dark .sec-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
+}
+
+.sec-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--teal); text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.sec-tag::before {
+  content: ''; width: 28px; height: 1px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+}
+
+.sec-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 400; line-height: 1.08;
+  letter-spacing: -1px; margin-bottom: 20px;
+}
+.sec-title i { font-style: italic; color: var(--teal); }
+
+.sec-body {
+  font-size: 16px; font-weight: 300;
+  color: var(--muted); max-width: 600px; line-height: 1.85;
+}
+
+/* ─── EXPANSION MODEL CARDS ─── */
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 64px;
+}
+.model-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 40px 32px;
+  position: relative; overflow: hidden;
+  transition: all .4s;
+}
+.model-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+}
+.model-card.recommended {
+  border-color: rgba(45,212,168,0.25);
+  background: linear-gradient(135deg, rgba(45,212,168,0.06), var(--card));
+}
+.model-card.recommended::before {
+  content: 'RECOMENDADO';
+  position: absolute; top: 16px; right: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px; letter-spacing: 2px;
+  color: var(--teal);
+  background: var(--teal-dim);
+  padding: 4px 10px; border-radius: 100px;
+  border: 1px solid rgba(45,212,168,0.2);
+}
+.model-icon {
+  width: 52px; height: 52px;
+  background: var(--teal-dim);
+  border: 1px solid rgba(45,212,168,0.15);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 28px;
+}
+.model-icon svg { width: 24px; height: 24px; }
+.model-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px; color: var(--white);
+  margin-bottom: 12px;
+}
+.model-desc {
+  font-size: 14px; color: var(--muted); line-height: 1.75;
+}
+
+/* ─── SYSTEM / CHECKLIST STYLE ─── */
+.sys-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
+  margin-top: 64px;
+}
+.sys-visual {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 44px 36px;
+  position: relative;
+}
+.sys-visual::after {
+  content: 'SISTEMA';
+  position: absolute; top: 16px; right: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px; letter-spacing: 3px; color: var(--muted); opacity: .4;
+}
+.sys-item {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--faint);
+}
+.sys-item:last-child { border-bottom: none; }
+.sys-check {
+  width: 28px; height: 28px; flex-shrink: 0;
+  border: 1.5px solid var(--teal);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--teal-dim);
+}
+.sys-check svg { width: 14px; height: 14px; }
+.sys-label {
+  font-size: 15px; color: var(--white); font-weight: 400;
+}
+.sys-quote {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: var(--teal-dim);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px; font-style: italic;
+  color: var(--teal-light);
+  line-height: 1.6;
+}
+
+/* ─── METRICS / KPI CARDS ─── */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-top: 64px;
+}
+.metric-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 32px 24px;
+  text-align: center;
+  transition: all .35s;
+}
+.metric-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+.metric-val {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px; color: var(--teal);
+  line-height: 1; margin-bottom: 8px;
+}
+.metric-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  color: var(--muted); text-transform: uppercase;
+}
+
+/* ─── PILLAR / INFO CARDS ─── */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px; margin-top: 64px;
+}
+.pillar-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 36px 28px;
+  transition: all .4s;
+  position: relative; overflow: hidden;
+}
+.pillar-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.25);
+}
+.pillar-card::before {
+  content: attr(data-n);
+  position: absolute; bottom: -16px; right: 12px;
+  font-family: 'Instrument Serif', serif;
+  font-size: 100px; font-weight: 400;
+  color: rgba(45,212,168,0.03);
+  line-height: 1; pointer-events: none;
+}
+.pillar-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--teal); text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.pillar-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px; color: var(--white);
+  margin-bottom: 14px; line-height: 1.2;
+}
+.pillar-body {
+  font-size: 14px; color: var(--muted); line-height: 1.75;
+  margin-bottom: 20px;
+}
+.pillar-list {
+  list-style: none; padding: 0;
+}
+.pillar-list li {
+  font-size: 13px; color: var(--white); font-weight: 400;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--faint);
+  display: flex; align-items: center; gap: 10px;
+}
+.pillar-list li:last-child { border-bottom: none; }
+.pillar-list li::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--teal); border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── ROADMAP ─── */
+.roadmap {
+  margin-top: 72px;
+  position: relative;
+  padding-left: 40px;
+}
+.roadmap::before {
+  content: '';
+  position: absolute; left: 15px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--teal), rgba(45,212,168,0.1));
+}
+.roadmap-step {
+  position: relative;
+  padding: 0 0 48px 36px;
+}
+.roadmap-step:last-child { padding-bottom: 0; }
+.roadmap-dot {
+  position: absolute; left: -33px; top: 6px;
+  width: 18px; height: 18px;
+  background: var(--void);
+  border: 2px solid var(--teal);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.roadmap-dot::after {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--teal); border-radius: 50%;
+}
+.roadmap-phase {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--teal); text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.roadmap-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px; color: var(--white);
+  margin-bottom: 8px;
+}
+.roadmap-desc {
+  font-size: 14px; color: var(--muted); line-height: 1.75;
+  max-width: 500px;
+}
+
+/* ─── RISK CARDS ─── */
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px; margin-top: 64px;
+}
+.risk-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 28px 24px;
+  transition: all .3s;
+}
+.risk-card:hover {
+  border-color: rgba(240,112,104,0.2);
+  border-left-color: var(--coral);
+  transform: translateY(-2px);
+}
+.risk-icon {
+  width: 36px; height: 36px;
+  background: var(--coral-dim);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.risk-icon svg { width: 18px; height: 18px; }
+.risk-title {
+  font-size: 15px; font-weight: 500;
+  color: var(--white); margin-bottom: 8px;
+}
+.risk-body {
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+}
+
+/* ─── TWO-OPTION COMPARE ─── */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px; margin-top: 64px;
+}
+.compare-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 44px 36px;
+  transition: all .4s;
+  position: relative;
+}
+.compare-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+.compare-card.highlight {
+  border-color: rgba(45,212,168,0.3);
+  background: linear-gradient(135deg, rgba(45,212,168,0.05), var(--card));
+}
+.compare-card.highlight::before {
+  content: 'ESCALA REAL';
+  position: absolute; top: 16px; right: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px; letter-spacing: 2px; color: var(--teal);
+  background: var(--teal-dim); padding: 4px 10px;
+  border-radius: 100px; border: 1px solid rgba(45,212,168,0.2);
+}
+.compare-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--teal); text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.compare-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px; color: var(--white);
+  margin-bottom: 16px; line-height: 1.15;
+}
+.compare-body {
+  font-size: 14px; color: var(--muted); line-height: 1.75;
+}
+
+/* ─── ADVANCED STRATEGIES ─── */
+.adv-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; margin-top: 64px;
+}
+.adv-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 36px 32px;
+  display: flex; gap: 20px; align-items: flex-start;
+  transition: all .35s;
+}
+.adv-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+}
+.adv-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--teal-dim), rgba(74,144,217,0.1));
+  border: 1px solid rgba(45,212,168,0.12);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.adv-icon svg { width: 22px; height: 22px; }
+.adv-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px; color: var(--white);
+  margin-bottom: 8px;
+}
+.adv-desc {
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+}
+
+/* ─── CTA ─── */
+.cta {
+  text-align: center;
+  padding: 140px 48px;
+  position: relative; overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(45,212,168,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-big {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 400; line-height: 1.05;
+  margin-bottom: 24px;
+  position: relative; z-index: 1;
+  letter-spacing: -1px;
+}
+.cta-big i { font-style: italic; color: var(--teal); }
+.cta-sub {
+  font-size: 16px; color: var(--muted);
+  max-width: 500px; margin: 0 auto 48px;
+  position: relative; z-index: 1;
+  line-height: 1.8;
+}
+
+/* ─── DISCLAIMER ─── */
+.disclaimer {
+  background: var(--coral-dim);
+  border: 1px solid rgba(240,112,104,0.15);
+  border-radius: var(--r-sm);
+  padding: 24px 32px;
+  margin: 0 48px 80px;
+  max-width: 1104px; margin-left: auto; margin-right: auto;
+}
+.disclaimer p {
+  font-size: 12px; color: rgba(240,112,104,0.75); line-height: 1.75;
+}
+.disclaimer strong { color: var(--coral); }
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--faint);
+  padding: 40px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+  max-width: 1300px; margin: 0 auto;
+}
+footer p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 2px; color: var(--muted);
+}
+.footer-brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px; font-weight: 500;
+  color: var(--teal); letter-spacing: 3px;
+  text-decoration: none;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--faint) 20%, var(--faint) 80%, transparent);
+  margin: 0 48px;
+  position: relative;
+}
+.divider::before {
+  content: '+';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--teal); opacity: .4;
+  background: var(--void); padding: 0 16px;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rv {
+  opacity: 0; transform: translateY(36px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+.rv.vis { opacity: 1; transform: none; }
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; }
+.d5 { transition-delay: .40s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .nav-mid { display: none; }
+  .sec { padding: 72px 20px; }
+  .sec-dark { padding: 72px 0; }
+  .sec-dark .sec-inner { padding: 0 20px; }
+  .model-grid { grid-template-columns: 1fr; }
+  .sys-layout { grid-template-columns: 1fr; gap: 36px; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .pillar-grid { grid-template-columns: 1fr; }
+  .compare { grid-template-columns: 1fr; }
+  .adv-grid { grid-template-columns: 1fr; }
+  .risk-grid { grid-template-columns: 1fr; }
+  .formula { padding: 24px 20px; }
+  .formula-text { font-size: 9px; letter-spacing: 1px; line-height: 2; }
+  .cta { padding: 80px 20px; }
+  footer { padding: 30px 20px; flex-direction: column; text-align: center; }
+  .disclaimer { margin: 0 20px 60px; padding: 20px; }
+  .divider { margin: 0 20px; }
+  .roadmap { padding-left: 32px; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 120px 16px 60px; }
+  .hero-title { letter-spacing: -1px; }
+  .hero-badge { font-size: 9px; letter-spacing: 3px; }
+  .hero-sub { font-size: 15px; }
+  .hero-ctas { flex-direction: column; align-items: center; }
+  .btn-fill, .btn-outline { width: 100%; justify-content: center; }
+  .metric-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .metric-card { padding: 24px 16px; }
+  .metric-val { font-size: 28px; }
+  .model-card, .pillar-card { padding: 28px 20px; }
+  .sys-visual { padding: 28px 20px; }
+  .compare-card { padding: 28px 24px; }
+  .adv-card { flex-direction: column; }
+  .roadmap-step { padding-left: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="../..">
+    <div class="nav-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    </div>
+    <div class="nav-name">PERU CORP <span>SA</span></div>
+  </a>
+  <div class="nav-mid">
+    <a href="#modelo">Modelo</a>
+    <a href="#sistemas">Sistemas</a>
+    <a href="#metricas">Metricas</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#riesgos">Riesgos</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+    <a href="#contacto" class="nav-cta">Contactar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-aura"></div>
+  <div class="hero-grid"></div>
+
+  <!-- Decorative crosses -->
+  <svg class="hero-cross" viewBox="0 0 40 40" fill="none" stroke="var(--teal)" stroke-width="1"><line x1="20" y1="5" x2="20" y2="35"/><line x1="5" y1="20" x2="35" y2="20"/></svg>
+  <svg class="hero-cross" viewBox="0 0 40 40" fill="none" stroke="var(--teal)" stroke-width="1"><line x1="20" y1="5" x2="20" y2="35"/><line x1="5" y1="20" x2="35" y2="20"/></svg>
+  <svg class="hero-cross" viewBox="0 0 40 40" fill="none" stroke="var(--teal)" stroke-width="1"><line x1="20" y1="5" x2="20" y2="35"/><line x1="5" y1="20" x2="35" y2="20"/></svg>
+  <svg class="hero-cross" viewBox="0 0 40 40" fill="none" stroke="var(--teal)" stroke-width="1"><line x1="20" y1="5" x2="20" y2="35"/><line x1="5" y1="20" x2="35" y2="20"/></svg>
+
+  <div class="hero-badge">Vertical de Inversion</div>
+  <h1 class="hero-title">Expansion dental<br>con <i>sistema</i></h1>
+  <p class="hero-sub">Guia completa para los socios de Peru Corp SA sobre como escalar clinicas dentales como un negocio. Desde la primera silla hasta un grupo dental operando como DSO.</p>
+  <div class="hero-ctas">
+    <a href="#modelo" class="btn-fill">Ver modelo de expansion <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="#metricas" class="btn-outline">Metricas clave <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></a>
+  </div>
+</div>
+
+<!-- FORMULA -->
+<div class="formula">
+  <div class="formula-text">Sistemas Estandarizados <span class="op">+</span> Dentistas Asociados <span class="op">+</span> Motor de Marketing <span class="op">+</span> Operaciones Centralizadas <span class="op">=</span> Expansion Exitosa</div>
+</div>
+
+<!-- 1. EXPANSION MODEL -->
+<div class="sec" id="modelo">
+  <div class="sec-tag rv">01 &mdash; Modelo de Expansion</div>
+  <h2 class="sec-title rv">Define tu estructura<br>de <i>crecimiento</i></h2>
+  <p class="sec-body rv d1">Antes de abrir una segunda ubicacion, elige tu modelo. Los grupos dentales mas exitosos comienzan con una sola marca replicada en multiples ubicaciones.</p>
+
+  <div class="model-grid">
+    <div class="model-card recommended rv d1">
+      <div class="model-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <div class="model-name">Multi-ubicacion, una marca</div>
+      <div class="model-desc">Misma marca, mismos sistemas, mismos precios en todas las clinicas. El modelo mas comun y probado para escalar. Maximiza reconocimiento y eficiencia operativa.</div>
+    </div>
+    <div class="model-card rv d2">
+      <div class="model-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <div class="model-name">Expansion por especialidad</div>
+      <div class="model-desc">De odontologia general hacia ortodoncia, implantes o cosmetica. Cada especialidad abre un nuevo flujo de ingresos con margenes mas altos.</div>
+    </div>
+    <div class="model-card rv d3">
+      <div class="model-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
+      </div>
+      <div class="model-name">Hub and spoke</div>
+      <div class="model-desc">Una clinica principal con oficinas satelite mas pequenas. Reduce costos de entrada por ubicacion y canaliza casos complejos al hub central.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 2. REPLICABLE SYSTEM -->
+<div class="sec" id="sistemas">
+  <div class="sec-tag rv">02 &mdash; Sistema Replicable</div>
+  <h2 class="sec-title rv">No puedes escalar<br>el <i>caos</i></h2>
+  <p class="sec-body rv d1">Todo debe estar estandarizado antes de abrir la segunda ubicacion. Si no puedes copiar y pegar tu clinica y que funcione igual, no estas listo.</p>
+
+  <div class="sys-layout">
+    <div class="sys-visual rv d2">
+      <div class="sys-item">
+        <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="sys-label">Proceso de intake de pacientes</div>
+      </div>
+      <div class="sys-item">
+        <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="sys-label">Protocolos de tratamiento</div>
+      </div>
+      <div class="sys-item">
+        <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="sys-label">Estructura de precios</div>
+      </div>
+      <div class="sys-item">
+        <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="sys-label">CRM y sistema de agendamiento</div>
+      </div>
+      <div class="sys-item">
+        <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="sys-label">Seguimiento y sistema de recall</div>
+      </div>
+    </div>
+    <div class="rv d3">
+      <div class="sec-title" style="font-size:clamp(24px,3vw,36px);">La pregunta clave</div>
+      <div class="sec-body">Cada proceso, cada interaccion, cada flujo de trabajo debe estar documentado y ser replicable. Tu equipo debe poder operar la clinica sin tu presencia constante.</div>
+      <div class="sys-quote">Puedo copiar y pegar esta clinica y que funcione exactamente igual?</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. UNIT ECONOMICS -->
+<div class="sec-dark" id="metricas">
+  <div class="sec-inner">
+    <div class="sec-tag rv">03 &mdash; Unit Economics</div>
+    <h2 class="sec-title rv">Si una clinica no es<br><i>rentable</i>, escalar<br>multiplica problemas</h2>
+    <p class="sec-body rv d1">Antes de expandir, tu primera clinica debe ser solida. Estos son los numeros que debes dominar por cada ubicacion.</p>
+
+    <div class="metric-grid">
+      <div class="metric-card rv d1">
+        <div class="metric-val">$/silla</div>
+        <div class="metric-label">Revenue por silla</div>
+      </div>
+      <div class="metric-card rv d2">
+        <div class="metric-val">CAC</div>
+        <div class="metric-label">Costo por paciente</div>
+      </div>
+      <div class="metric-card rv d3">
+        <div class="metric-val">25-35%</div>
+        <div class="metric-label">Costo de personal</div>
+      </div>
+      <div class="metric-card rv d4">
+        <div class="metric-val">&lt;10%</div>
+        <div class="metric-label">Renta como % de revenue</div>
+      </div>
+      <div class="metric-card rv d5">
+        <div class="metric-val">P&L</div>
+        <div class="metric-label">Margen de ganancia</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. LOCATION + 5. ASSOCIATES -->
+<div class="sec">
+  <div class="sec-tag rv">04 &mdash; Ubicacion y Equipo</div>
+  <h2 class="sec-title rv">Donde abres y quien<br>opera son <i>todo</i></h2>
+
+  <div class="pillar-grid">
+    <div class="pillar-card rv d1" data-n="04">
+      <div class="pillar-num">Estrategia de Ubicacion</div>
+      <div class="pillar-name">La ubicacion es tu motor de crecimiento</div>
+      <div class="pillar-body">El exito de cada nueva ubicacion depende mas de donde abres que de cuanto inviertes. Busca mercados con demanda real.</div>
+      <ul class="pillar-list">
+        <li>Alta densidad poblacional</li>
+        <li>Demografia de ingreso medio-alto</li>
+        <li>Baja saturacion de dentistas</li>
+        <li>Buena visibilidad: retail > oficinas escondidas</li>
+      </ul>
+    </div>
+    <div class="pillar-card rv d2" data-n="05">
+      <div class="pillar-num">Dentistas Asociados</div>
+      <div class="pillar-name">Escalar sin estar en la silla</div>
+      <div class="pillar-body">No escalas haciendo todos los procedimientos tu mismo. Escalas contratando asociados, entrenandolos bajo tu sistema y manteniendo la calidad consistente.</div>
+      <ul class="pillar-list">
+        <li>Contratar dentistas asociados</li>
+        <li>Entrenar bajo tu sistema estandarizado</li>
+        <li>Tu rol cambia: contratar + entrenar + monitorear</li>
+        <li>La calidad no depende de una sola persona</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 6. PATIENT ACQUISITION -->
+<div class="sec">
+  <div class="sec-tag rv">06 &mdash; Adquisicion de Pacientes</div>
+  <h2 class="sec-title rv">Cada nueva ubicacion<br>necesita <i>flujo inmediato</i></h2>
+  <p class="sec-body rv d1">Tu sitio web y tu funnel son tan importantes como tu clinica. Los grupos dentales de alto rendimiento dominan estos canales.</p>
+
+  <div class="pillar-grid">
+    <div class="pillar-card rv d1" data-n="G">
+      <div class="pillar-num">Canal 01</div>
+      <div class="pillar-name">Google Ads</div>
+      <div class="pillar-body">Busquedas de alta intencion como "dentista cerca de mi" o "implantes dentales precio". El canal mas directo para pacientes listos para agendar.</div>
+    </div>
+    <div class="pillar-card rv d2" data-n="S">
+      <div class="pillar-num">Canal 02</div>
+      <div class="pillar-name">SEO Local</div>
+      <div class="pillar-body">Posicionamiento organico en Google Maps y resultados locales. Genera pacientes consistentes sin costo por clic una vez establecido.</div>
+    </div>
+    <div class="pillar-card rv d3" data-n="R">
+      <div class="pillar-num">Canal 03</div>
+      <div class="pillar-name">Redes Sociales</div>
+      <div class="pillar-body">Casos antes/despues, contenido educativo, testimonios en video. Construye confianza y genera referidos de forma organica.</div>
+    </div>
+    <div class="pillar-card rv d4" data-n="*">
+      <div class="pillar-num">Canal 04</div>
+      <div class="pillar-name">Reputacion Online</div>
+      <div class="pillar-body">Gestion activa de resenas en Google, Yelp y redes. Las resenas son el nuevo boca a boca: un perfil con 4.8 estrellas convierte mas que cualquier anuncio.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. CENTRALIZED BACK OFFICE -->
+<div class="sec-dark">
+  <div class="sec-inner">
+    <div class="sec-tag rv">07 &mdash; Back Office Centralizado</div>
+    <h2 class="sec-title rv">No dupliques admin<br>en cada <i>ubicacion</i></h2>
+    <p class="sec-body rv d1">Centralizar las operaciones administrativas reduce costos y aumenta eficiencia a medida que creces. Una sola estructura de soporte para todas las clinicas.</p>
+
+    <div class="sys-layout" style="margin-top:64px;">
+      <div class="rv d2">
+        <div class="sec-title" style="font-size:clamp(24px,3vw,36px);">Centraliza desde el inicio</div>
+        <div class="sec-body" style="margin-bottom:24px;">Cada funcion administrativa duplicada es un costo innecesario. Las operaciones centralizadas te permiten escalar sin multiplicar overhead.</div>
+        <ul class="pillar-list">
+          <li>Facturacion y seguros</li>
+          <li>Marketing y generacion de pacientes</li>
+          <li>Call center y agendamiento</li>
+          <li>Recursos humanos y contratacion</li>
+          <li>Tracking financiero por ubicacion</li>
+        </ul>
+      </div>
+      <div class="sys-visual rv d3">
+        <div class="sys-item">
+          <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="sys-label">Un sistema de billing para todas las clinicas</div>
+        </div>
+        <div class="sys-item">
+          <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <div class="sys-label">Dashboards financieros en tiempo real</div>
+        </div>
+        <div class="sys-item">
+          <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div class="sys-label">Equipo de HR centralizado</div>
+        </div>
+        <div class="sys-item">
+          <div class="sys-check"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="sys-label">Marketing unificado, ejecutado por ubicacion</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. KPIs -->
+<div class="sec">
+  <div class="sec-tag rv">08 &mdash; KPIs Criticos</div>
+  <h2 class="sec-title rv">Lo que mides<br>es lo que <i>crece</i></h2>
+  <p class="sec-body rv d1">Los grupos dentales de alto rendimiento son data-driven. Estos son los KPIs que debes trackear obsesivamente en cada ubicacion.</p>
+
+  <div class="pillar-grid">
+    <div class="pillar-card rv d1" data-n="%">
+      <div class="pillar-num">KPI Clave</div>
+      <div class="pillar-name">Tasa de aceptacion de casos</div>
+      <div class="pillar-body">Que porcentaje de tratamientos propuestos acepta el paciente. Si es baja, el problema esta en la presentacion, no en el paciente.</div>
+    </div>
+    <div class="pillar-card rv d2" data-n="$">
+      <div class="pillar-num">KPI Clave</div>
+      <div class="pillar-name">Produccion por proveedor</div>
+      <div class="pillar-body">Cuanto genera cada dentista por dia/semana/mes. Determina si necesitas mas sillas, mas horas o mas eficiencia.</div>
+    </div>
+    <div class="pillar-card rv d3" data-n="C">
+      <div class="pillar-num">KPI Clave</div>
+      <div class="pillar-name">Costo de adquisicion (CAC)</div>
+      <div class="pillar-body">Cuanto cuesta atraer cada nuevo paciente. Compara por canal para optimizar tu presupuesto de marketing.</div>
+    </div>
+    <div class="pillar-card rv d4" data-n="V">
+      <div class="pillar-num">KPI Clave</div>
+      <div class="pillar-name">Valor de vida del paciente (LTV)</div>
+      <div class="pillar-body">Cuanto vale un paciente a lo largo de su relacion con tu clinica. Un LTV alto justifica un CAC mas agresivo.</div>
+    </div>
+    <div class="pillar-card rv d4" data-n="R">
+      <div class="pillar-num">KPI Clave</div>
+      <div class="pillar-name">Tasa de re-cita de higiene</div>
+      <div class="pillar-body">Que porcentaje de pacientes reagendan su limpieza. Es el indicador mas fuerte de retencion y salud del negocio a largo plazo.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 9. BRAND -->
+<div class="sec">
+  <div class="sec-tag rv">09 &mdash; Construir Marca</div>
+  <h2 class="sec-title rv">Los pacientes confian<br>en marcas <i>reconocibles</i></h2>
+  <p class="sec-body rv d1">No construyas clinicas, construye una marca. Piensa en la escala de Aspen Dental o Heartland Dental: identidad visual consistente, presencia digital fuerte y posicionamiento comunitario.</p>
+
+  <div class="pillar-grid" style="margin-top:48px;">
+    <div class="pillar-card rv d1" data-n="I">
+      <div class="pillar-num">Pilar de Marca</div>
+      <div class="pillar-name">Identidad visual consistente</div>
+      <div class="pillar-body">Logo, colores, tipografia, interiorismo: todo debe ser identico en cada ubicacion. Un paciente debe reconocer tu marca al entrar a cualquier clinica.</div>
+    </div>
+    <div class="pillar-card rv d2" data-n="D">
+      <div class="pillar-num">Pilar de Marca</div>
+      <div class="pillar-name">Presencia digital fuerte</div>
+      <div class="pillar-body">Sitio web profesional, perfiles activos en redes, contenido regular. Tu presencia online es la primera impresion para la mayoria de pacientes nuevos.</div>
+    </div>
+    <div class="pillar-card rv d3" data-n="T">
+      <div class="pillar-num">Pilar de Marca</div>
+      <div class="pillar-name">Testimonios y casos</div>
+      <div class="pillar-body">Antes/despues, historias de pacientes, video testimonios. La prueba social convierte mas que cualquier argumento de venta.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 10. OWNER VS CEO -->
+<div class="sec-dark">
+  <div class="sec-inner">
+    <div class="sec-tag rv">10 &mdash; La Decision Clave</div>
+    <h2 class="sec-title rv">Operador clinico<br>o <i>CEO dental</i></h2>
+    <p class="sec-body rv d1">En algun punto, debes elegir. Y la respuesta define el techo de tu crecimiento.</p>
+
+    <div class="compare">
+      <div class="compare-card rv d2">
+        <div class="compare-label">Opcion A</div>
+        <div class="compare-title">Seguir en la silla</div>
+        <div class="compare-body">Sigues tratando pacientes personalmente. Control total de la calidad clinica, pero escalamiento limitado. Tu capacidad de crecimiento esta limitada por tus horas disponibles.</div>
+      </div>
+      <div class="compare-card highlight rv d3">
+        <div class="compare-label">Opcion B</div>
+        <div class="compare-title">Convertirte en CEO</div>
+        <div class="compare-body">Reduces o eliminas tu trabajo clinico. Te enfocas en crecimiento, contratacion, sistemas y estrategia. La escala real ocurre cuando sales de la silla.</div>
+      </div>
+    </div>
+
+    <div class="sys-quote rv d4" style="margin-top:40px;max-width:700px;">La escala real ocurre cuando sales de la silla. Tu negocio no puede crecer mas alla de tu capacidad personal mientras sigas siendo el operador principal.</div>
+  </div>
+</div>
+
+<!-- 11. ROADMAP -->
+<div class="sec" id="roadmap">
+  <div class="sec-tag rv">11 &mdash; Roadmap de Expansion</div>
+  <h2 class="sec-title rv">De una clinica a un<br><i>grupo dental</i></h2>
+  <p class="sec-body rv d1">Un camino probado de crecimiento. Cada fase tiene objetivos claros antes de avanzar a la siguiente.</p>
+
+  <div class="roadmap">
+    <div class="roadmap-step rv d1">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-phase">Fase 01</div>
+      <div class="roadmap-title">1 clinica: Optimizar sistemas</div>
+      <div class="roadmap-desc">Tu primera clinica es tu laboratorio. Perfecciona cada proceso, documenta todo, alcanza rentabilidad consistente. No avances hasta que esta fase sea solida.</div>
+    </div>
+    <div class="roadmap-step rv d2">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-phase">Fase 02</div>
+      <div class="roadmap-title">2-3 clinicas: Estandarizar y centralizar</div>
+      <div class="roadmap-desc">Replica tu sistema en nuevas ubicaciones. Centraliza operaciones administrativas. Valida que tu modelo funciona sin tu presencia constante.</div>
+    </div>
+    <div class="roadmap-step rv d3">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-phase">Fase 03</div>
+      <div class="roadmap-title">4-10 clinicas: Capa de gestion</div>
+      <div class="roadmap-desc">Necesitas gerentes regionales, directores clinicos, y una estructura de liderazgo. Tu rol se vuelve 100% estrategico. Construye el equipo ejecutivo.</div>
+    </div>
+    <div class="roadmap-step rv d4">
+      <div class="roadmap-dot"></div>
+      <div class="roadmap-phase">Fase 04</div>
+      <div class="roadmap-title">10+ clinicas: Operar como DSO</div>
+      <div class="roadmap-desc">Dental Service Organization. Una empresa que posee y opera multiples clinicas bajo una estructura corporativa. Adquisiciones, integracion vertical, escala institucional.</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 12. MISTAKES -->
+<div class="sec" id="riesgos">
+  <div class="sec-tag rv">12 &mdash; Errores a Evitar</div>
+  <h2 class="sec-title rv">Los errores que<br><i>destruyen</i> grupos dentales</h2>
+  <p class="sec-body rv d1">Estos son los errores mas comunes que cometen los grupos dentales en crecimiento. Conocerlos de antemano es la mejor proteccion.</p>
+
+  <div class="risk-grid">
+    <div class="risk-card rv d1">
+      <div class="risk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <div class="risk-title">Expandir demasiado pronto</div>
+      <div class="risk-body">Abrir la segunda ubicacion antes de que los sistemas de la primera esten solidos. Multiplicas problemas en lugar de ganancias.</div>
+    </div>
+    <div class="risk-card rv d2">
+      <div class="risk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" y1="8" x2="23" y2="14"/><line x1="23" y1="8" x2="17" y2="14"/></svg></div>
+      <div class="risk-title">Contratar sin sistema de training</div>
+      <div class="risk-body">Traer asociados rapido sin un proceso de entrenamiento estandarizado. Resultado: calidad inconsistente y pacientes insatisfechos.</div>
+    </div>
+    <div class="risk-card rv d3">
+      <div class="risk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div class="risk-title">Mala seleccion de ubicacion</div>
+      <div class="risk-body">Elegir por precio de renta en lugar de por demografia y demanda. Una ubicacion barata sin pacientes es la mas cara de todas.</div>
+    </div>
+    <div class="risk-card rv d4">
+      <div class="risk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <div class="risk-title">Marketing debil</div>
+      <div class="risk-body">Abrir una clinica nueva sin un sistema de adquisicion de pacientes listo para generar flujo desde el dia uno. Sin pacientes, no hay negocio.</div>
+    </div>
+    <div class="risk-card rv d5">
+      <div class="risk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--coral)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4M7 12h2"/></svg></div>
+      <div class="risk-title">Sin visibilidad financiera</div>
+      <div class="risk-body">No tener P&L por ubicacion. Si no sabes cual clinica es rentable y cual no, estas operando a ciegas.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 13. ADVANCED -->
+<div class="sec-dark">
+  <div class="sec-inner">
+    <div class="sec-tag rv">13 &mdash; Estrategias Avanzadas</div>
+    <h2 class="sec-title rv">Aceleradores de<br><i>crecimiento</i></h2>
+    <p class="sec-body rv d1">Una vez que tu operacion es estable, estas estrategias te permiten acelerar significativamente la expansion.</p>
+
+    <div class="adv-grid">
+      <div class="adv-card rv d1">
+        <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <div>
+          <div class="adv-name">Adquisiciones</div>
+          <div class="adv-desc">Comprar clinicas existentes en lugar de abrir desde cero. Obtienes pacientes, equipo y flujo de caja desde el dia uno. Creces mas rapido con menor riesgo de arranque.</div>
+        </div>
+      </div>
+      <div class="adv-card rv d2">
+        <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div>
+          <div class="adv-name">Servicios de especialidad</div>
+          <div class="adv-desc">Implantes, ortodoncia, cosmetica dental. Margenes significativamente mas altos que odontologia general. Un centro de implantes puede generar 3-5x el revenue por caso.</div>
+        </div>
+      </div>
+      <div class="adv-card rv d3">
+        <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <div>
+          <div class="adv-name">Planes de membresia</div>
+          <div class="adv-desc">Revenue recurrente de pacientes sin seguro. Un plan mensual que cubre limpiezas y descuentos en procedimientos. Predecibilidad financiera y mayor retencion.</div>
+        </div>
+      </div>
+      <div class="adv-card rv d4">
+        <div class="adv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div>
+          <div class="adv-name">Integracion vertical</div>
+          <div class="adv-desc">Laboratorios propios, centros de imagenologia, cadena de suministro interna. Reduce costos, aumenta margenes y te da control total sobre la calidad del producto final.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer" style="margin-top:80px;">
+  <p><strong>Aviso importante:</strong> Este contenido es educativo e informativo para los socios de Peru Corp SA. No constituye asesoria financiera, legal, medica ni de inversiones. Las estrategias descritas requieren analisis individual y asesoria profesional antes de su implementacion. Los resultados mencionados son ilustrativos y dependen de multiples factores externos.</p>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="contacto">
+  <div class="sec-tag rv" style="justify-content:center">Siguiente Paso</div>
+  <div class="cta-big rv">Piensa en<br><i>sistemas</i>, no en sillas</div>
+  <p class="cta-sub rv d1">La riqueza en odontologia no viene de trabajar mas horas. Viene de construir un sistema que opera sin depender de una sola persona.</p>
+  <div class="rv d2">
+    <a href="../.." class="btn-fill" style="margin-bottom:16px;">Volver a Peru Corp SA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-brand" href="../..">PERU CORP SA</a>
+  <p>Vertical Dental &middot; Guia Estrategica de Expansion</p>
+  <p>Material exclusivo para socios</p>
+</footer>
+
+<script>
+(function() {
+  // ─── SCROLL REVEAL ───
+  var els = document.querySelectorAll('.rv');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('vis');
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function(el) { io.observe(el); });
+
+  // ─── THEME TOGGLE ───
+  var html = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  var key = 'dental-theme';
+
+  // Load saved preference
+  var saved = localStorage.getItem(key);
+  if (saved === 'dark') html.classList.remove('light');
+  else if (!saved) html.classList.add('light');
+
+  // Enable transitions after initial load
+  setTimeout(function() {
+    html.style.transition = 'background .4s, color .4s';
+    document.body.style.transition = 'background .4s, color .4s';
+  }, 100);
+
+  btn.addEventListener('click', function() {
+    html.classList.toggle('light');
+    localStorage.setItem(key, html.classList.contains('light') ? 'light' : 'dark');
+  });
+})();
+</script>
+</body>
+</html>
