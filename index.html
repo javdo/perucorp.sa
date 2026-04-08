@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peru Corp SA — Ronda Fundadora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg:       #f7f6f2;
+  --bg2:      #efede7;
+  --ink:      #0e0e0c;
+  --ink2:     #2a2a26;
+  --muted:    #6b6b64;
+  --line:     rgba(14,14,12,0.10);
+  --amber:    #d97b2b;
+  --amber-lt: #f0a654;
+  --amber-bg: rgba(217,123,43,0.08);
+  --white:    #ffffff;
+  --red:      #b83c2b;
+  --r:        6px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 64px;
+  background: rgba(247,246,242,0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 15px; letter-spacing: 0.5px;
+  color: var(--ink); text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.logo-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--amber);
+  animation: pdot 2.5s ease-in-out infinite;
+}
+@keyframes pdot { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.5);opacity:0.5;} }
+
+.nav-r { display: flex; align-items: center; gap: 20px; }
+.nav-badge {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--amber);
+  padding: 5px 14px; border-radius: 100px;
+  border: 1.5px solid var(--amber);
+}
+.nav-cta {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--ink); color: var(--bg);
+  padding: 10px 22px; border-radius: var(--r);
+  text-decoration: none; transition: background .2s;
+}
+.nav-cta:hover { background: var(--amber); }
+
+/* HERO */
+.hero {
+  min-height: 100vh; padding-top: 64px;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 35%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 35%, black 30%, transparent 100%);
+}
+.hero-glow {
+  position: absolute; pointer-events: none;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,123,43,0.11) 0%, transparent 65%);
+  top: -10%; right: -15%; z-index: 0;
+}
+.hero-glow2 {
+  position: absolute; pointer-events: none;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(217,123,43,0.07) 0%, transparent 65%);
+  bottom: 10%; left: -5%; z-index: 0;
+}
+
+.hero-content {
+  flex: 1; display: flex; flex-direction: column; justify-content: center;
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  padding: 80px 48px 60px; position: relative; z-index: 1;
+}
+
+.hero-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--amber);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 36px;
+  opacity: 0; animation: up .65s .1s forwards;
+}
+.hero-tag::before { content:''; width:20px; height:2px; background:var(--amber); display:block; }
+
+h1.hero-h {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(56px, 9.5vw, 116px);
+  font-weight: 800; line-height: 0.91; letter-spacing: -3px;
+  margin-bottom: 44px;
+  opacity: 0; animation: up .65s .22s forwards;
+}
+.outline-text { -webkit-text-stroke: 2px var(--ink); color: transparent; }
+.amber-dot { color: var(--amber); }
+
+.hero-bottom {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
+  opacity: 0; animation: up .65s .38s forwards;
+}
+.hero-desc {
+  max-width: 420px; font-size: 16px; font-weight: 300;
+  color: var(--muted); line-height: 1.8;
+}
+.hero-desc strong { color: var(--ink); font-weight: 500; }
+
+.kpi-row {
+  display: flex; background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--r);
+  overflow: hidden; flex-shrink: 0;
+}
+.kpi {
+  padding: 22px 30px; border-right: 1px solid var(--line);
+  text-align: center; min-width: 88px;
+}
+.kpi:last-child { border-right: none; }
+.kpi-n {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px; font-weight: 800;
+  color: var(--ink); display: block; line-height: 1;
+}
+.kpi-n.a { color: var(--amber); }
+.kpi-l {
+  font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); display: block; margin-top: 4px; white-space: nowrap;
+}
+
+.hero-cta-row {
+  margin-top: 48px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  opacity: 0; animation: up .65s .52s forwards;
+}
+.btn-fill {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  background: var(--ink); color: var(--bg);
+  padding: 15px 34px; border-radius: var(--r);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: background .2s, gap .2s;
+}
+.btn-fill:hover { background: var(--amber); gap: 16px; }
+.btn-ghost {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px; font-weight: 600;
+  color: var(--muted); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  border-bottom: 1.5px solid var(--line); padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.btn-ghost:hover { color: var(--amber); border-color: var(--amber); }
+
+/* COUNTDOWN */
+.cd-strip {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: stretch; justify-content: center;
+  padding: 0 48px; position: relative; overflow: hidden;
+}
+.cd-strip::after {
+  content: '';
+  position: absolute; left: -100%; top: 0; bottom: 0; width: 60px;
+  background: linear-gradient(90deg, transparent, rgba(217,123,43,0.15), transparent);
+  animation: scan 5s linear infinite;
+}
+@keyframes scan { to { left: 110%; } }
+
+.cd-lbl {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(247,246,242,0.3);
+  display: flex; align-items: center;
+  padding: 20px 40px 20px 0;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  margin-right: 40px;
+}
+.cd-units { display: flex; align-items: center; gap: 0; }
+.cd-unit { padding: 18px 24px; display: flex; flex-direction: column; align-items: center; }
+.cd-n {
+  font-family: 'Syne', sans-serif;
+  font-size: 36px; font-weight: 800;
+  color: var(--bg); line-height: 1; display: block;
+  font-variant-numeric: tabular-nums;
+  transition: color .4s;
+}
+.cd-n.urgent { color: var(--amber); }
+.cd-sub {
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(247,246,242,0.25); margin-top: 4px; font-family: 'Instrument Sans', sans-serif;
+}
+.cd-colon {
+  font-family: 'Syne', sans-serif;
+  font-size: 30px; font-weight: 800;
+  color: rgba(247,246,242,0.15); padding-bottom: 6px; align-self: center;
+}
+
+/* SECTIONS */
+.sec { padding: 112px 48px; max-width: 1200px; margin: 0 auto; }
+.sec-full { padding: 112px 0; }
+.sec-full .inn { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+.eye {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--amber);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 18px;
+}
+.eye::before { content:''; width:18px; height:2px; background:var(--amber); }
+
+.sh {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(34px, 4.5vw, 56px);
+  font-weight: 800; letter-spacing: -2px; line-height: 1.0;
+  margin-bottom: 18px;
+}
+.sh .it {
+  font-style: italic; font-weight: 400;
+  font-family: 'Instrument Sans', sans-serif;
+  color: var(--muted); letter-spacing: -1px;
+}
+.sp {
+  font-size: 15px; font-weight: 300;
+  color: var(--muted); max-width: 560px; line-height: 1.8;
+}
+
+/* SHARES DARK */
+.shares-sec {
+  background: var(--ink); padding: 112px 0;
+  position: relative; overflow: hidden;
+}
+.shares-sec::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.shares-inn { max-width: 1200px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 1; }
+
+.shares-hdr {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 24px; margin-bottom: 52px;
+}
+.shares-hdr .eye { color: var(--amber-lt); }
+.shares-hdr .eye::before { background: var(--amber-lt); }
+.shares-hdr .sh { color: var(--bg); margin-bottom: 0; }
+.shares-hdr .sh .it { color: rgba(247,246,242,0.3); }
+
+.spots-pill {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  background: var(--amber); color: var(--white);
+  padding: 10px 20px; border-radius: var(--r); white-space: nowrap;
+}
+
+.tiles {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 10px; margin-bottom: 44px;
+}
+.tile {
+  aspect-ratio: 1 / 1.1;
+  background: rgba(247,246,242,0.03);
+  border: 1px solid rgba(247,246,242,0.07);
+  border-radius: var(--r);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: border-color .3s, background .3s, transform .3s;
+}
+.tile::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--amber); transform: scaleX(0); transition: transform .3s;
+}
+.tile:hover::after { transform: scaleX(1); }
+.tile:hover { border-color: rgba(217,123,43,0.35); transform: translateY(-3px); }
+
+.tile.taken {
+  background: rgba(217,123,43,0.09);
+  border-color: rgba(217,123,43,0.22); cursor: default;
+}
+.tile.taken:hover { transform: none; }
+.tile.taken::before {
+  content: 'TOMADA';
+  position: absolute; top: 7px;
+  font-family: 'Syne', sans-serif;
+  font-size: 7px; letter-spacing: 1.5px; font-weight: 700;
+  color: var(--amber-lt);
+}
+.tile-n {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px; font-weight: 800; color: var(--bg);
+}
+.tile.taken .tile-n { color: var(--amber-lt); }
+.tile-p {
+  font-size: 10px; letter-spacing: 1px; color: rgba(247,246,242,0.3);
+  font-family: 'Instrument Sans', sans-serif;
+}
+.tile.taken .tile-p { color: rgba(217,123,43,0.5); }
+
+.meta-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px; background: rgba(255,255,255,0.05);
+  border-radius: var(--r); overflow: hidden;
+}
+.meta-c {
+  background: rgba(247,246,242,0.025);
+  padding: 28px 28px;
+}
+.meta-n {
+  font-family: 'Syne', sans-serif;
+  font-size: 34px; font-weight: 800;
+  color: var(--bg); display: block; line-height: 1;
+}
+.meta-n.a { color: var(--amber-lt); }
+.meta-l {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(247,246,242,0.28); margin-top: 6px; display: block;
+  font-family: 'Instrument Sans', sans-serif;
+}
+
+/* PHASES */
+.phases-wrap {
+  display: grid; grid-template-columns: 1fr 1.8fr;
+  gap: 56px; align-items: start; margin-top: 56px;
+}
+.phase-tabs { display: flex; flex-direction: column; gap: 6px; }
+.tab {
+  border: 1px solid var(--line); border-radius: var(--r);
+  padding: 24px 28px; cursor: pointer;
+  transition: border-color .3s, background .3s;
+  position: relative; overflow: hidden;
+}
+.tab::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--amber); border-radius: 3px 0 0 3px;
+  transform: scaleY(0); transition: transform .3s;
+}
+.tab.active::before { transform: scaleY(1); }
+.tab.active { border-color: rgba(217,123,43,0.28); background: var(--white); }
+.tab-step {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--amber); margin-bottom: 6px;
+}
+.tab-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px; font-weight: 700; color: var(--ink);
+}
+
+.phase-detail {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 44px;
+  position: sticky; top: 80px;
+}
+.pd-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 88px; font-weight: 800;
+  color: rgba(14,14,12,0.04); line-height: 1;
+  margin-bottom: 4px; letter-spacing: -4px;
+}
+.pd-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px; font-weight: 800;
+  letter-spacing: -1px; margin-bottom: 18px;
+}
+.pd-body {
+  font-size: 15px; font-weight: 300;
+  color: var(--muted); line-height: 1.8; margin-bottom: 28px;
+}
+.milestones { display: flex; flex-direction: column; gap: 11px; }
+.ms {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 14px; color: var(--ink2);
+}
+.ms::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--amber); flex-shrink: 0; margin-top: 5px;
+}
+
+/* DONUT CHART */
+.chart-bg { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.donut-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center; margin-top: 60px;
+}
+.donut-wrap { display: flex; align-items: center; justify-content: center; position: relative; }
+.donut-center { position: absolute; text-align: center; pointer-events: none; }
+.dc-n { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; color: var(--ink); display: block; line-height: 1; }
+.dc-l { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 2px; display: block; }
+
+.legend-stack { display: flex; flex-direction: column; gap: 8px; }
+.leg {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--r);
+  transition: border-color .25s, transform .25s;
+}
+.leg:hover { border-color: rgba(14,14,12,0.18); transform: translateX(4px); }
+.leg-bar { width: 4px; height: 32px; border-radius: 2px; flex-shrink: 0; }
+.leg-info { flex: 1; }
+.leg-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: -0.3px; }
+.leg-desc { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.leg-pct { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; }
+
+/* BAR CHART */
+.bar-wrap {
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.chart-box {
+  margin-top: 56px; background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--r);
+  padding: 48px 48px 32px; position: relative; overflow: hidden;
+}
+.chart-box::before {
+  content: 'PROYECCION ESTIMADA — NO GARANTIZADA';
+  position: absolute; top: 14px; right: 18px;
+  font-family: 'Syne', sans-serif; font-size: 8px;
+  letter-spacing: 2px; font-weight: 700;
+  color: rgba(14,14,12,0.12); text-transform: uppercase;
+}
+.chart-note { font-size: 12px; color: var(--muted); margin-top: 16px; font-style: italic; }
+
+/* GOV */
+.gov-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; margin-top: 56px;
+}
+.gov-card {
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 34px 30px;
+  position: relative; overflow: hidden;
+  transition: border-color .3s, box-shadow .3s;
+}
+.gov-card:hover { border-color: rgba(14,14,12,0.18); box-shadow: 0 6px 20px rgba(14,14,12,0.05); }
+.gov-card::after {
+  content: attr(data-l);
+  position: absolute; bottom: -14px; right: 6px;
+  font-family: 'Syne', sans-serif; font-size: 90px; font-weight: 800;
+  color: rgba(14,14,12,0.04); line-height: 1; pointer-events: none;
+}
+.gov-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  color: var(--amber); text-transform: uppercase;
+  margin-bottom: 14px; display: block;
+}
+.gov-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px; font-weight: 700; letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+.gov-body { font-size: 14px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+/* RISKS */
+.risks-bg { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.risks-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 14px; margin-top: 56px;
+}
+.risk-card {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 28px; background: var(--white);
+  border: 1px solid var(--line); border-radius: var(--r);
+  transition: border-color .25s;
+}
+.risk-card:hover { border-color: rgba(14,14,12,0.18); }
+.risk-idx {
+  font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800;
+  color: rgba(14,14,12,0.06); line-height: 1; flex-shrink: 0; width: 32px;
+}
+.risk-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px; font-weight: 700; margin-bottom: 5px;
+}
+.risk-body { font-size: 13px; color: var(--muted); line-height: 1.65; font-weight: 300; }
+
+/* DISCLAIMER */
+.disc {
+  background: rgba(184,60,43,0.05);
+  border-top: 1px solid rgba(184,60,43,0.14);
+  border-bottom: 1px solid rgba(184,60,43,0.14);
+  padding: 22px 48px;
+}
+.disc p {
+  max-width: 1104px; margin: 0 auto;
+  font-size: 12px; color: rgba(184,60,43,0.7); line-height: 1.7;
+}
+.disc strong { color: var(--red); }
+
+/* CTA FINAL */
+.cta-final {
+  padding: 140px 48px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-final::before {
+  content: 'PERU CORP';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(72px, 14vw, 190px);
+  font-weight: 800; color: rgba(14,14,12,0.03);
+  white-space: nowrap; letter-spacing: -5px; pointer-events: none;
+}
+.cta-final::after {
+  content: '';
+  position: absolute; top: 50%; left: 8%; right: 8%;
+  height: 1px; background: var(--line); pointer-events: none;
+}
+.cta-h {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 800; letter-spacing: -3px; line-height: 0.95;
+  margin-bottom: 24px; position: relative; z-index: 1;
+}
+.cta-h .a { color: var(--amber); }
+.cta-p {
+  font-size: 16px; font-weight: 300; color: var(--muted);
+  max-width: 420px; margin: 0 auto 44px;
+  position: relative; z-index: 1; line-height: 1.75;
+}
+.cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; z-index: 1; }
+.cta-note {
+  margin-top: 30px;
+  font-family: 'Syne', sans-serif; font-size: 9px;
+  letter-spacing: 3px; font-weight: 700;
+  color: var(--muted); text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.foot-logo { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 0.5px; }
+.foot-r { font-family: 'Syne', sans-serif; font-size: 10px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; }
+
+/* ANIMATIONS */
+@keyframes up { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
+.reveal.vis { opacity:1; transform:none; }
+.d1 { transition-delay:.08s; }
+.d2 { transition-delay:.16s; }
+.d3 { transition-delay:.24s; }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav { padding:0 20px; }
+  .nav-badge { display:none; }
+  .hero-content { padding:60px 20px 40px; }
+  .hero-bottom { flex-direction:column; align-items:flex-start; }
+  .kpi-row { width:100%; }
+  .cd-strip { padding:0 12px; }
+  .cd-lbl { display:none; }
+  .cd-units { width:100%; justify-content:center; }
+  .cd-unit { padding:14px 12px; }
+  .cd-n { font-size:28px; }
+  .cd-colon { font-size:24px; }
+  .cd-sub { font-size:8px; letter-spacing:1.5px; }
+  .sec { padding:72px 20px; }
+  .sec-full { padding:72px 0; }
+  .sec-full .inn { padding:0 20px; }
+  .shares-inn { padding:0 20px; }
+  .tiles { grid-template-columns:repeat(4,1fr); }
+  .meta-grid { grid-template-columns:repeat(2,1fr); }
+  .phases-wrap { grid-template-columns:1fr; gap:28px; }
+  .phase-detail { position:static; }
+  .donut-layout { grid-template-columns:1fr; }
+  .gov-grid { grid-template-columns:1fr; }
+  .risks-grid { grid-template-columns:1fr; }
+  .cta-final, .disc { padding-left:20px; padding-right:20px; }
+  footer { padding:24px 20px; flex-direction:column; text-align:center; }
+  .chart-box { padding:24px 16px 20px; }
+}
+@media(max-width:480px){
+  .cd-strip { padding:0 8px; }
+  .cd-unit { padding:12px 8px; }
+  .cd-n { font-size:22px; }
+  .cd-colon { font-size:20px; padding-bottom:4px; }
+  .cd-sub { font-size:7px; letter-spacing:1px; }
+  .tiles { grid-template-columns:repeat(3,1fr); }
+  .hero-content h1 { font-size:clamp(28px,7vw,48px); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#"><span class="logo-dot"></span>PERU CORP SA</a>
+  <div class="nav-r">
+    <span class="nav-badge">3 Lugares</span>
+    <a href="#unirse" class="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Ronda Fundadora &mdash; Cierra 15 de Abril a las 12:00</div>
+
+    <h1 class="hero-h">
+      Capital<br>
+      <span class="outline-text">privado</span><span class="amber-dot">.</span><br>
+      Resultados<br>reales.
+    </h1>
+
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        Peru Corp SA es una corporacion de inversion privada de alto rendimiento.
+        Portafolio multi-sector, gobierno estructurado y
+        <strong>acceso exclusivo para socios fundadores.</strong>
+      </p>
+      <div class="kpi-row">
+        <div class="kpi"><span class="kpi-n a">7</span><span class="kpi-l">Socios</span></div>
+        <div class="kpi"><span class="kpi-n">$100</span><span class="kpi-l">Por accion</span></div>
+        <div class="kpi"><span class="kpi-n a">3</span><span class="kpi-l">Disponibles</span></div>
+      </div>
+    </div>
+
+    <div class="hero-cta-row">
+      <a href="#unirse" class="btn-fill">Reservar lugar <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#como-funciona" class="btn-ghost">Ver modelo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="cd-strip">
+  <span class="cd-lbl">Tiempo restante</span>
+  <div class="cd-units">
+    <div class="cd-unit"><span class="cd-n" id="cd-d">--</span><span class="cd-sub">Dias</span></div>
+    <div class="cd-colon">:</div>
+    <div class="cd-unit"><span class="cd-n" id="cd-h">--</span><span class="cd-sub">Horas</span></div>
+    <div class="cd-colon">:</div>
+    <div class="cd-unit"><span class="cd-n" id="cd-m">--</span><span class="cd-sub">Min</span></div>
+    <div class="cd-colon">:</div>
+    <div class="cd-unit"><span class="cd-n" id="cd-s">--</span><span class="cd-sub">Seg</span></div>
+  </div>
+</div>
+
+<!-- WHAT IS IT -->
+<section class="sec" id="que-es">
+  <div class="eye reveal">Que es Peru Corp SA</div>
+  <h2 class="sh reveal">Una holding privada<br><span class="it">para los que actuan.</span></h2>
+  <p class="sp reveal d1">Peru Corp SA es una micro-corporacion de inversion privada. No un fondo publico, no un esquema. Una empresa real, legalmente constituida, con socios reales, activos reales y decisiones tomadas en conjunto. El capital combinado se despliega en verticales seleccionados con ventaja operativa clara y retornos medibles.</p>
+</section>
+
+<!-- SHARES -->
+<div class="shares-sec" id="acciones">
+  <div class="shares-inn">
+    <div class="shares-hdr">
+      <div>
+        <div class="eye reveal">Las 7 Acciones</div>
+        <h2 class="sh reveal">Precio de entrada: <span class="it">$100 c/u</span></h2>
+      </div>
+      <div class="spots-pill reveal">Solo 3 lugares disponibles</div>
+    </div>
+
+    <div class="tiles reveal d1">
+      <div class="tile taken"><span class="tile-n">#1</span><span class="tile-p">$100</span></div>
+      <div class="tile taken"><span class="tile-n">#2</span><span class="tile-p">$100</span></div>
+      <div class="tile taken"><span class="tile-n">#3</span><span class="tile-p">$100</span></div>
+      <div class="tile taken"><span class="tile-n">#4</span><span class="tile-p">$100</span></div>
+      <div class="tile"><span class="tile-n">#5</span><span class="tile-p">$100</span></div>
+      <div class="tile"><span class="tile-n">#6</span><span class="tile-p">$100</span></div>
+      <div class="tile"><span class="tile-n">#7</span><span class="tile-p">$100</span></div>
+    </div>
+
+    <div class="meta-grid reveal d2">
+      <div class="meta-c"><span class="meta-n">$700</span><span class="meta-l">Capital inicial</span></div>
+      <div class="meta-c"><span class="meta-n a">14.3%</span><span class="meta-l">Participacion por socio</span></div>
+      <div class="meta-c"><span class="meta-n">5</span><span class="meta-l">Verticales objetivo</span></div>
+      <div class="meta-c"><span class="meta-n a">3</span><span class="meta-l">Lugares disponibles</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="sec" id="como-funciona">
+  <div class="eye reveal">Como Funciona</div>
+  <h2 class="sh reveal">Tres fases, <span class="it">un objetivo.</span></h2>
+
+  <div class="phases-wrap">
+    <div class="phase-tabs reveal">
+      <div class="tab active" onclick="setPhase(0,this)">
+        <div class="tab-step">Fase 01</div>
+        <div class="tab-title">Constitucion Legal</div>
+      </div>
+      <div class="tab" onclick="setPhase(1,this)">
+        <div class="tab-step">Fase 02</div>
+        <div class="tab-title">Primer Activo</div>
+      </div>
+      <div class="tab" onclick="setPhase(2,this)">
+        <div class="tab-step">Fase 03</div>
+        <div class="tab-title">Expansion</div>
+      </div>
+    </div>
+
+    <div class="phase-detail reveal d2" id="phase-box">
+      <div class="pd-num" id="ph-n">01</div>
+      <div class="pd-title" id="ph-t">Constitucion Legal</div>
+      <div class="pd-body" id="ph-b">Los 7 socios fundadores formalizan su ingreso antes del 15 de abril. La corporacion se constituye legalmente, se establece la cuenta bancaria corporativa y se firma el acuerdo de socios que regula votos, salidas y distribucion de ganancias.</div>
+      <div class="milestones" id="ph-ml">
+        <div class="ms">Registro corporativo oficial</div>
+        <div class="ms">Cuenta bancaria corporativa abierta</div>
+        <div class="ms">Acuerdo de socios firmado por los 7</div>
+        <div class="ms">Estructura de roles definida: operadores, inversores, asesores</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONUT CHART -->
+<div class="chart-bg sec-full" id="portafolio">
+  <div class="inn">
+    <div class="eye reveal">Portafolio Objetivo</div>
+    <h2 class="sh reveal">Diversificacion <span class="it">por diseno.</span></h2>
+
+    <div class="donut-layout">
+      <div class="donut-wrap reveal">
+        <svg id="donut-svg" viewBox="0 0 320 320" width="100%" style="max-width:340px;display:block;margin:0 auto;">
+          <!-- Track -->
+          <circle cx="160" cy="160" r="110" fill="none" stroke="rgba(14,14,12,0.07)" stroke-width="52"/>
+          <!-- Segments (circumference = 691.1) -->
+          <!-- Bienes Raices 35% = 241.9 -->
+          <circle id="ds1" cx="160" cy="160" r="110" fill="none" stroke="#d97b2b" stroke-width="52"
+            stroke-dasharray="0 691.1" stroke-dashoffset="172.8"
+            style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dasharray 1.1s .15s ease;"/>
+          <!-- Dental 25% = 172.8 -->
+          <circle id="ds2" cx="160" cy="160" r="110" fill="none" stroke="#1c1c1a" stroke-width="52"
+            stroke-dasharray="0 691.1" stroke-dashoffset="-69.1"
+            style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dasharray 1.1s .3s ease;"/>
+          <!-- Glamping 20% = 138.2 -->
+          <circle id="ds3" cx="160" cy="160" r="110" fill="none" stroke="#547a63" stroke-width="52"
+            stroke-dasharray="0 691.1" stroke-dashoffset="-241.9"
+            style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dasharray 1.1s .45s ease;"/>
+          <!-- Social 10% = 69.1 -->
+          <circle id="ds4" cx="160" cy="160" r="110" fill="none" stroke="#8b7050" stroke-width="52"
+            stroke-dasharray="0 691.1" stroke-dashoffset="-380"
+            style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dasharray 1.1s .6s ease;"/>
+          <!-- Capital 10% = 69.1 -->
+          <circle id="ds5" cx="160" cy="160" r="110" fill="none" stroke="#adadA5" stroke-width="52"
+            stroke-dasharray="0 691.1" stroke-dashoffset="-449.2"
+            style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dasharray 1.1s .75s ease;"/>
+          <!-- Hole -->
+          <circle cx="160" cy="160" r="84" fill="#efede7"/>
+          <text x="160" y="152" text-anchor="middle" font-family="Syne,sans-serif" font-size="30" font-weight="800" fill="#0e0e0c">5</text>
+          <text x="160" y="171" text-anchor="middle" font-family="Instrument Sans,sans-serif" font-size="9.5" fill="#6b6b64" letter-spacing="2">SECTORES</text>
+        </svg>
+        <div class="donut-center" style="display:none;"></div>
+      </div>
+
+      <div class="legend-stack reveal d2">
+        <div class="leg"><div class="leg-bar" style="background:#d97b2b;"></div><div class="leg-info"><div class="leg-name">Bienes Raices</div><div class="leg-desc">Rentas, fix and flip, microlotes</div></div><div class="leg-pct">35%</div></div>
+        <div class="leg"><div class="leg-bar" style="background:#1c1c1a;"></div><div class="leg-info"><div class="leg-name">Clinicas Dentales</div><div class="leg-desc">Equipo, expansion, participacion</div></div><div class="leg-pct">25%</div></div>
+        <div class="leg"><div class="leg-bar" style="background:#547a63;"></div><div class="leg-info"><div class="leg-name">Glamping y Turismo</div><div class="leg-desc">Estadias boutique, activos experienciales</div></div><div class="leg-pct">20%</div></div>
+        <div class="leg"><div class="leg-bar" style="background:#8b7050;"></div><div class="leg-info"><div class="leg-name">Brazo Social</div><div class="leg-desc">Impacto comunitario, eficiencia fiscal</div></div><div class="leg-pct">10%</div></div>
+        <div class="leg"><div class="leg-bar" style="background:#adadA5;"></div><div class="leg-info"><div class="leg-name">Capital Oportunista</div><div class="leg-desc">Nuevas verticales, despliegue flexible</div></div><div class="leg-pct">10%</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BAR CHART -->
+<div class="bar-wrap sec-full">
+  <div class="inn">
+    <div class="eye reveal">Proyeccion de Crecimiento</div>
+    <h2 class="sh reveal">Capital a <span class="it">5 anos.</span></h2>
+    <p class="sp reveal d1">Estimacion basada en reinversion de utilidades y apalancamiento estrategico moderado. Valores referenciales.</p>
+
+    <div class="chart-box reveal d2">
+      <svg id="bar-svg" viewBox="0 0 860 280" width="100%" style="overflow:visible;">
+        <line x1="44" y1="224" x2="820" y2="224" stroke="rgba(14,14,12,0.07)" stroke-width="1"/>
+        <line x1="44" y1="168" x2="820" y2="168" stroke="rgba(14,14,12,0.04)" stroke-width="1" stroke-dasharray="3,5"/>
+        <line x1="44" y1="112" x2="820" y2="112" stroke="rgba(14,14,12,0.04)" stroke-width="1" stroke-dasharray="3,5"/>
+        <line x1="44" y1="56"  x2="820" y2="56"  stroke="rgba(14,14,12,0.04)" stroke-width="1" stroke-dasharray="3,5"/>
+        <text x="36" y="228" text-anchor="end" font-family="Syne,sans-serif" font-size="9.5" fill="rgba(14,14,12,0.28)">$0</text>
+        <text x="36" y="172" text-anchor="end" font-family="Syne,sans-serif" font-size="9.5" fill="rgba(14,14,12,0.28)">5K</text>
+        <text x="36" y="116" text-anchor="end" font-family="Syne,sans-serif" font-size="9.5" fill="rgba(14,14,12,0.28)">10K</text>
+        <text x="36" y="60"  text-anchor="end" font-family="Syne,sans-serif" font-size="9.5" fill="rgba(14,14,12,0.28)">15K</text>
+
+        <rect class="bb" x="72"  data-y="218" data-h="6"   data-w="64" rx="3" fill="#d97b2b"/>
+        <text x="104" y="243" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" fill="rgba(14,14,12,0.35)" letter-spacing="0.5">Ano 0</text>
+        <text class="bv" x="104" data-fy="212" font-family="Syne,sans-serif" font-size="11" font-weight="700" fill="#d97b2b" text-anchor="middle" opacity="0">$700</text>
+
+        <rect class="bb" x="210" data-y="204" data-h="20"  data-w="64" rx="3" fill="#d97b2b"/>
+        <text x="242" y="243" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" fill="rgba(14,14,12,0.35)" letter-spacing="0.5">Ano 1</text>
+        <text class="bv" x="242" data-fy="198" font-family="Syne,sans-serif" font-size="11" font-weight="700" fill="#d97b2b" text-anchor="middle" opacity="0">~$2K</text>
+
+        <rect class="bb" x="348" data-y="168" data-h="56"  data-w="64" rx="3" fill="#d97b2b"/>
+        <text x="380" y="243" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" fill="rgba(14,14,12,0.35)" letter-spacing="0.5">Ano 2</text>
+        <text class="bv" x="380" data-fy="162" font-family="Syne,sans-serif" font-size="11" font-weight="700" fill="#d97b2b" text-anchor="middle" opacity="0">~$5K</text>
+
+        <rect class="bb" x="486" data-y="112" data-h="112" data-w="64" rx="3" fill="#1c1c1a"/>
+        <text x="518" y="243" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" fill="rgba(14,14,12,0.35)" letter-spacing="0.5">Ano 3</text>
+        <text class="bv" x="518" data-fy="106" font-family="Syne,sans-serif" font-size="11" font-weight="700" fill="#1c1c1a" text-anchor="middle" opacity="0">~$10K</text>
+
+        <rect class="bb" x="624" data-y="56"  data-h="168" data-w="64" rx="3" fill="#1c1c1a"/>
+        <text x="656" y="243" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" fill="rgba(14,14,12,0.35)" letter-spacing="0.5">Ano 5</text>
+        <text class="bv" x="656" data-fy="50" font-family="Syne,sans-serif" font-size="11" font-weight="700" fill="#1c1c1a" text-anchor="middle" opacity="0">~$20K+</text>
+
+        <polyline id="trend-line" points="104,218 242,204 380,168 518,112 656,56"
+          fill="none" stroke="rgba(217,123,43,0.4)" stroke-width="1.5" stroke-dasharray="4,5"
+          opacity="0" style="transition:opacity .4s;"/>
+      </svg>
+      <p class="chart-note">Cifras en USD. Estimacion referencial. Los rendimientos reales dependen del desempeno de los activos y condiciones de mercado.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GOVERNANCE -->
+<section class="sec" id="gobierno">
+  <div class="eye reveal">Gobierno Corporativo</div>
+  <h2 class="sh reveal">Reglas claras, <span class="it">desde el dia uno.</span></h2>
+  <p class="sp reveal d1">La estructura de decision esta definida antes de la primera inversion. Sin ambiguedades.</p>
+
+  <div class="gov-grid">
+    <div class="gov-card reveal" data-l="V">
+      <span class="gov-num">01 Voto</span>
+      <div class="gov-title">Mayoria estructurada</div>
+      <div class="gov-body">Cada socio tiene un voto proporcional a su accion. Inversiones requieren mayoria simple (4 de 7). Cambios estructurales requieren unanimidad.</div>
+    </div>
+    <div class="gov-card reveal d1" data-l="R">
+      <span class="gov-num">02 Roles</span>
+      <div class="gov-title">Responsabilidades definidas</div>
+      <div class="gov-body">Operadores gestionan activos activamente. Inversionistas aportan capital y ejercen el voto. Asesores contribuyen expertise sectorial sin responsabilidad operativa.</div>
+    </div>
+    <div class="gov-card reveal d2" data-l="A">
+      <span class="gov-num">03 Acuerdo</span>
+      <div class="gov-title">Contrato de socios</div>
+      <div class="gov-body">Antes del primer despliegue de capital, todos los socios firman un acuerdo que regula salidas, valoracion de acciones, resolucion de conflictos y politica de distribuciones.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RISKS -->
+<div class="risks-bg sec-full">
+  <div class="inn">
+    <div class="eye reveal">Transparencia Total</div>
+    <h2 class="sh reveal">Los riesgos, <span class="it">sin rodeos.</span></h2>
+    <p class="sp reveal d1">Presentamos los riesgos reales porque la confianza se construye con informacion completa, no con proyecciones optimistas.</p>
+    <div class="risks-grid">
+      <div class="risk-card reveal">
+        <div class="risk-idx">01</div>
+        <div><div class="risk-title">Constitucion y cumplimiento legal</div><div class="risk-body">La estructura corporativa debe ser revisada por un abogado antes de emitir acciones. El cumplimiento regulatorio no es opcional ni diferible.</div></div>
+      </div>
+      <div class="risk-card reveal d1">
+        <div class="risk-idx">02</div>
+        <div><div class="risk-title">Conflictos entre socios</div><div class="risk-body">La combinacion de relaciones personales y capital requiere reglas escritas. El acuerdo de socios existe para prevenir este escenario antes de que ocurra.</div></div>
+      </div>
+      <div class="risk-card reveal d2">
+        <div class="risk-idx">03</div>
+        <div><div class="risk-title">Capital inicial limitado</div><div class="risk-body">$700 es el punto de partida. La estrategia incluye apalancamiento selectivo para acceder a activos de mayor escala desde la primera inversion.</div></div>
+      </div>
+      <div class="risk-card reveal d3">
+        <div class="risk-idx">04</div>
+        <div><div class="risk-title">Ejecucion multi-sector</div><div class="risk-body">Cada vertical requiere expertise especifico. La expansion sectorial es gradual, priorizando verticales donde el equipo posea ventaja operativa real y demostrable.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disc">
+  <p><strong>Aviso legal:</strong> Este material es informativo y esta dirigido exclusivamente a potenciales socios conocidos. No constituye una oferta publica de valores ni asesoramiento financiero regulado. Toda participacion debe ser revisada por un profesional legal antes de formalizarse. Los rendimientos proyectados son estimados y no estan garantizados. Peru Corp SA opera como entidad privada entre partes relacionadas.</p>
+</div>
+
+<!-- FINAL CTA -->
+<div class="cta-final" id="unirse">
+  <h2 class="cta-h reveal">Quedan<br><span class="a">3 lugares.</span></h2>
+  <p class="cta-p reveal d1">La ronda fundadora cierra el 15 de abril a las 12:00. Una vez completa, no habra nuevos socios a este precio de entrada.</p>
+  <div class="cta-btns reveal d2">
+    <a href="mailto:contacto@perucorp.com" class="btn-fill">Solicitar informacion <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="#acciones" class="btn-ghost">Ver acciones disponibles <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+  <div class="cta-note reveal d3">Ronda cierra · 15 de Abril 2025 · 12:00 PM</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">PERU CORP SA</div>
+  <div class="foot-r">Ronda Fundadora 2025 &mdash; Privado y Confidencial</div>
+</footer>
+
+<script>
+/* === COUNTDOWN — target: April 15 2025 12:00:00 local === */
+(function () {
+  var target = new Date(2026, 3, 15, 12, 0, 0); // month 3 = April
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    var now  = new Date();
+    var diff = target.getTime() - now.getTime();
+
+    var dEl = document.getElementById('cd-d');
+    var hEl = document.getElementById('cd-h');
+    var mEl = document.getElementById('cd-m');
+    var sEl = document.getElementById('cd-s');
+
+    if (!dEl) return;
+
+    if (diff <= 0) {
+      dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+      [dEl, hEl, mEl, sEl].forEach(function (e) { e.classList.add('urgent'); });
+      return;
+    }
+
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+
+    dEl.textContent = pad(d);
+    hEl.textContent = pad(h);
+    mEl.textContent = pad(m);
+    sEl.textContent = pad(s);
+
+    if (d === 0) { dEl.classList.add('urgent'); hEl.classList.add('urgent'); }
+  }
+
+  tick();
+  setInterval(tick, 1000);
+}());
+
+/* === SCROLL REVEAL === */
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1 });
+  els.forEach(function (el) { io.observe(el); });
+}());
+
+/* === PHASE TABS === */
+var phaseData = [
+  {
+    n: '01', t: 'Constitucion Legal',
+    b: 'Los 7 socios fundadores formalizan su ingreso antes del 15 de abril. La corporacion se constituye legalmente, se establece la cuenta bancaria corporativa y se firma el acuerdo de socios que regula votos, salidas y distribucion de ganancias.',
+    ml: ['Registro corporativo oficial', 'Cuenta bancaria corporativa abierta', 'Acuerdo de socios firmado por los 7', 'Estructura de roles definida: operadores, inversores, asesores']
+  },
+  {
+    n: '02', t: 'Primer Activo',
+    b: 'Con el capital combinado y la estructura legal lista, los socios votan la primera inversion. El enfoque inicial se concentra donde el grupo posea ventaja operativa real: una propiedad de renta, equipo dental o un activo de glamping boutique.',
+    ml: ['Primera inversion votada por mayoria', 'Capital desplegado en vertical prioritario', 'Estructura de gestion del activo definida', 'Primer reporte trimestral a socios']
+  },
+  {
+    n: '03', t: 'Expansion',
+    b: 'Las ganancias operativas se reinvierten sistematicamente en nuevos activos. El portafolio crece vertical por vertical, con potencial de emitir nuevas acciones a valuaciones superiores y desarrollar spin-offs por categoria.',
+    ml: ['Reinversion de utilidades en nuevos activos', 'Posible emision de acciones a mayor valuacion', 'Desarrollo de spin-offs por vertical', 'Modelo de dividendos para socios a largo plazo']
+  }
+];
+
+function setPhase(idx, el) {
+  document.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('active'); });
+  el.classList.add('active');
+  var p = phaseData[idx];
+  document.getElementById('ph-n').textContent = p.n;
+  document.getElementById('ph-t').textContent = p.t;
+  document.getElementById('ph-b').textContent = p.b;
+  document.getElementById('ph-ml').innerHTML = p.ml
+    .map(function (m) { return '<div class="ms">' + m + '</div>'; }).join('');
+}
+
+/* === DONUT ANIMATION === */
+(function () {
+  var segs   = [241.9, 172.8, 138.2, 69.1, 69.1];
+  var offsets= [172.8, -69.1, -241.9, -380, -449.2];
+  var ids    = ['ds1','ds2','ds3','ds4','ds5'];
+  var total  = 691.1;
+  var done   = false;
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !done) {
+        done = true;
+        ids.forEach(function (id, i) {
+          var el = document.getElementById(id);
+          if (el) {
+            el.setAttribute('stroke-dasharray', segs[i] + ' ' + total);
+            el.setAttribute('stroke-dashoffset', offsets[i]);
+          }
+        });
+      }
+    });
+  }, { threshold: 0.25 });
+
+  var svg = document.getElementById('donut-svg');
+  if (svg) io.observe(svg);
+}());
+
+/* === BAR CHART ANIMATION === */
+(function () {
+  var done = false;
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && !done) {
+        done = true;
+
+        var bars = document.querySelectorAll('.bb');
+        var vals = document.querySelectorAll('.bv');
+
+        bars.forEach(function (b, i) {
+          var finalY = +b.getAttribute('data-y');
+          var finalH = +b.getAttribute('data-h');
+          var finalW = +b.getAttribute('data-w');
+
+          // start collapsed
+          b.setAttribute('height', 0);
+          b.setAttribute('width', finalW);
+          b.setAttribute('y', finalY + finalH);
+          b.setAttribute('x', b.getAttribute('x'));
+
+          setTimeout(function () {
+            b.style.transition = 'height .75s cubic-bezier(.4,0,.2,1), y .75s cubic-bezier(.4,0,.2,1)';
+            b.setAttribute('y', finalY);
+            b.setAttribute('height', finalH);
+          }, i * 160 + 80);
+
+          setTimeout(function () {
+            var v = vals[i];
+            if (v) {
+              v.setAttribute('y', v.getAttribute('data-fy'));
+              v.setAttribute('opacity', '1');
+            }
+          }, i * 160 + 750);
+        });
+
+        setTimeout(function () {
+          var t = document.getElementById('trend-line');
+          if (t) t.style.opacity = '0.55';
+        }, 1100);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  var svg = document.getElementById('bar-svg');
+  if (svg) io.observe(svg);
+}());
+</script>
+</body>
+</html>
